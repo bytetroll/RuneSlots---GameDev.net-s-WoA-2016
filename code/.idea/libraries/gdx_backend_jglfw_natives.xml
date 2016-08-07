@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gdx-backend-jglfw-natives">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-jglfw-natives.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

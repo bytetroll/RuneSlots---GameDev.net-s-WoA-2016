@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="woa2016">
+    <output-path>$PROJECT_DIR$/../build</output-path>
+    <root id="archive" name="woa2016.jar">
+      <element id="module-output" name="woMain" />
+      <element id="library" level="project" name="gdx" />
+      <element id="library" level="project" name="gdx-backend-jglfw" />
+      <element id="library" level="project" name="gdx-backend-jglfw-natives" />
+      <element id="library" level="project" name="gdx-backend-lwjgl" />
+      <element id="library" level="project" name="gdx-backend-lwjgl-natives" />
+      <element id="library" level="project" name="gdx-natives" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
