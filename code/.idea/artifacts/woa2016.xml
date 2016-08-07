@@ -2,11 +2,11 @@
   <artifact type="jar" build-on-make="true" name="woa2016">
     <output-path>$PROJECT_DIR$/../build</output-path>
     <root id="archive" name="woa2016.jar">
-      <element id="module-output" name="woa2016" />
-      <element id="library" level="project" name="lwjgl" />
+      <element id="module-output" name="code" />
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
+      <element id="library" level="project" name="libgdx" />
     </root>
   </artifact>
 </component>

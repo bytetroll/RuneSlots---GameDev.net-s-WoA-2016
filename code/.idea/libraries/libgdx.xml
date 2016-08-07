@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="libgdx">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-lwjgl-natives.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-jglfw.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-jglfw-natives.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-setup.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-robovm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-android.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-headless.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-backend-gwt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/gdx-natives.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="gdx-box2d">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/extensions/gdx-box2d/gdx-box2d.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/extensions/gdx-box2d/gdx-box2d-natives.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/bytetroll/woa2016/thirdparty/libgdx/extensions/gdx-box2d/gdx-box2d-gwt.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
