@@ -36,14 +36,8 @@ public class woIO {
         }
     }
 
-    public static String CreateFile(String path) {
-        try {
-            new File(path).createNewFile();
-        } catch(Exception except) {
-            woRuntime.HandleException(except);
-        }
-
-        return path;
+    public static woFile CreateFile(String path) {
+        return new woFile(path);
     }
 
     public static void DeleteDirectory(String path) {

@@ -38,7 +38,7 @@ public class woFile {
                 }
                 */
 
-                throw new Exception("woFile instance was passed a path to a non-existant file.");
+                handle.createNewFile();
             } catch(Exception except) {
                 woRuntime.HandleException(except);
             }
