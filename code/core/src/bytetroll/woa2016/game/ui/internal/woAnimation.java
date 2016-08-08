@@ -5,6 +5,7 @@ import bytetroll.woa2016.math.woVector2;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable;
@@ -26,14 +27,14 @@ public class woAnimation extends BaseDrawable {
     }
 
     @Override
-    public void draw(SpriteBatch batch, woVector2 pos, float width, float height) {
-        batch.draw(anims[currentRowAnim].getKeyFrame(stateTime, looped), pos.x, pos.y, width, height);
+    public void draw(Batch batch, float x, float y, float width, float height) {
+        batch.draw(anims[currentRowAnim].getKeyFrame(stateTime, looped), x, y, width, height);
     }
 
     public Animation[] Animations(woAsset texture, float frameDuration) {
         final Texture tex = new Texture(texture.AsLibGdxHandle());
         TextureRegion[][] texRegions = TextureRegion.split(tex, (tex.getWidth() / frameColumns),
-                (tex.getHeight() / frameRows);
+                (tex.getHeight() / frameRows));
         Animation[] anims = new Animation[frameRows];
 
         for(int i = 0; i < frameRows; i++) {

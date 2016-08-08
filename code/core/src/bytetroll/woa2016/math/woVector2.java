@@ -19,6 +19,6 @@ public class woVector2 {
         y = 0.0f;
     }
 
-    public double x = 0;
-    public double y = 0;
+    public float x = 0;
+    public float y = 0;
 }
