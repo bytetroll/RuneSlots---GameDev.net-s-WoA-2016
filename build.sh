@@ -11,3 +11,7 @@ echo Y | rm -r tmp
 echo Y | rm -r dependency-cache
 echo Y | rm -r classes
 echo Y | rm -r libs
+
+cd "build"
+
+mv "desktop-1.0.jar" "woa2016.jar"
