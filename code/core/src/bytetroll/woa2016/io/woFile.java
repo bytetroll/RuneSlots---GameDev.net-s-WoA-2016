@@ -69,14 +69,14 @@ public class woFile {
         */
     }
 
-    private woFile() {
-        // This is needed so that we can construct a new copy of this class with annotation data
-        // for annotation checking.
-    }
-
     public woFile(woFile file) {
         handle = file.handle;
         info = file.info;
+    }
+
+    private woFile() {
+        // This is needed so that we can construct a new copy of this class with annotation data
+        // for annotation checking.
     }
 
     public File handle = null;
