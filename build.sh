@@ -1,3 +1,5 @@
+echo Y | rm -r build
+
 cd "code"
 
 gradle desktop:dist
