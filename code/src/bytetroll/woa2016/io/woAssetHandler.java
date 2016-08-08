@@ -21,8 +21,8 @@ public class woAssetHandler {
                     }
                 }
 
-                throw new Exception("woAssetArchive failed to locate any asset with name \"" + name + "\"" +  " in " +
-                        "any" + "packed archive.");
+                //throw new Exception("woAssetArchive failed to locate any asset with name \"" + name + "\"" +  " in " +
+                        //"any" + " packed archive.");
             }
         } catch(Exception except) {
             woRuntime.HandleException(except);
