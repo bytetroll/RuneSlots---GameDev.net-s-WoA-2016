@@ -28,7 +28,7 @@ public class woAssetArchive {
                 woAsset asset = new woAsset();
                 asset.name = woPath.GetFilename(file.getName());
                 asset.archiveName = woPath.GetFilename(path);
-                asset.data = archive.getInputStream(file);
+                asset.data.stream = archive.getInputStream(file);
 
                 files.add(asset);
             }

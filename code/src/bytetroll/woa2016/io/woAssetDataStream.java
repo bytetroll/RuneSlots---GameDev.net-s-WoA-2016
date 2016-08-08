@@ -4,8 +4,10 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 public class woAssetDataStream {
-    public static String AsString(InputStream stream) {
+    public String AsString() {
         final Scanner scanner = new Scanner(stream).useDelimiter("\\A");
         return scanner.hasNext() ? scanner.next() : "";
     }
+
+    public InputStream stream = null;
 }

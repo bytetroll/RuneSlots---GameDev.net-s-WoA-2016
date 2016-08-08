@@ -6,7 +6,7 @@ public class woAsset {
     public woAsset() {
         name = null;
         archiveName = null;
-        data = null;
+        data = new woAssetDataStream();
     }
 
     public woAsset(woAsset asset) {
@@ -17,5 +17,5 @@ public class woAsset {
 
     public String name;
     public String archiveName;
-    public InputStream data;
+    public woAssetDataStream data;
 }

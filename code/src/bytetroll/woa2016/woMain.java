@@ -16,8 +16,8 @@ public class woMain {
         cfg.height = woRegistry.FindInt("windowing", "height", 400);
 
         woAssetArchiveHandler.CacheAllInAssetDirectory();
-        //final woAsset asset = woAssetHandler.Find("test.txt");
-        //System.out.print(woAssetDataStream.AsString(asset.data));
+        final woAsset asset = woAssetHandler.Find("test.txt");
+        System.out.print(asset.data.AsString());
 
         new LwjglApplication(new woGame());
     }
