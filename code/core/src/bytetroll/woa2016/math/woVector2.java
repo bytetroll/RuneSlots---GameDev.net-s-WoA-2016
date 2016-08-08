@@ -4,7 +4,7 @@ public class woVector2 {
     public woVector2() {
     }
 
-    public woVector2(double x, double y) {
+    public woVector2(float x, float y) {
         this.x = x;
         this.y = y;
     }
