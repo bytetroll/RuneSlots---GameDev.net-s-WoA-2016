@@ -1,5 +1,6 @@
 package bytetroll.woa2016;
 
+import bytetroll.woa2016.io.woAssetArchiveHandler;
 import bytetroll.woa2016.io.woAssetHandler;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -13,6 +14,8 @@ public class woGame extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
+		woAssetArchiveHandler.CacheAllInAssetDirectory();
+
 		batch = new SpriteBatch();
 		img = new Texture(woAssetHandler.Find("background.png").AsLibGdxHandle());
 	}

@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -19,12 +20,13 @@ public class woAssetArchive {
     public woAssetArchive(String path) {
         this.path = path;
 
-        final woFile archive = new woFile(path);
         try {
-            ZipInputStream zStream = new ZipInputStream(new FileInputStream(archive.handle));
-            ZipEntry file = null;
+            final ZipFile archive = new ZipFile(path);
+            Enumeration<? extends ZipEntry> entries = archive.entries();
 
-            while((file = zStream.getNextEntry()) != null) {
+            while(entries.hasMoreElements()) {
+                final ZipEntry file = entries.nextElement();
+
                 if(woSys.IsOSX()) {
                     // Skip Apple's crapp meta folders that automatically get packed into all zips.
                     if(file.getName().contains("__MACOSX")) {
@@ -32,9 +34,6 @@ public class woAssetArchive {
                     }
                 }
 
-                byte buffer[] = new byte[(int)file.getSize()];
-
-                zStream.read(buffer);
 
                 // This is a shitty way to have to do this, but not matter what, Java will not
                 // Stop extracting files that have been read.
@@ -48,14 +47,50 @@ public class woAssetArchive {
                 woAsset asset = new woAsset();
                 asset.name = woPath.GetFilename(file.getName());
                 asset.archiveName = woPath.GetFilename(path);
-                asset.gdxHandle = new FileHandle(BuildVirtualFile(LookupFile(zStream, file.getName())));
-                asset.data.stream = new ByteArrayInputStream(buffer);
+
+                final InputStream iStream = archive.getInputStream(file);
+                asset.gdxHandle = new FileHandle(BuildVirtualFile(iStream));
+                asset.data.stream = woDataStream.InputStreamToByteInputStream(iStream);
 
                 files.add(asset);
             }
+
+//            final woFile archive = new woFile(path);
+//            ZipInputStream zStream = new ZipInputStream(new FileInputStream(archive.handle));
+//            ZipEntry file = null;
+//
+//            while((file = zStream.getNextEntry()) != null) {
+//                if(woSys.IsOSX()) {
+//                    // Skip Apple's crapp meta folders that automatically get packed into all zips.
+//                    if(file.getName().contains("__MACOSX")) {
+//                        continue;
+//                    }
+//                }
+//
+//                byte buffer[] = new byte[/*(int)file.getSize()*/ 8388608]; // 8mb file buffer.
+//                zStream.read(buffer);
+//
+//                // This is a shitty way to have to do this, but not matter what, Java will not
+//                // Stop extracting files that have been read.
+//                final String extractedPath = woRuntime.ExecutionPath() + file.getName();
+//                if(woIO.FileExists(extractedPath)) {
+//                    woIO.DeleteFile(extractedPath);
+//
+//                    woCLI.PrintLine("Deleted file " + extractedPath);
+//                }
+//
+//                woAsset asset = new woAsset();
+//                asset.name = woPath.GetFilename(file.getName());
+//                asset.archiveName = woPath.GetFilename(path);
+//                asset.gdxHandle = new FileHandle(BuildVirtualFile(LookupFile(zStream, file.getName())));
+//                asset.data.stream = new ByteArrayInputStream(buffer);
+//
+//                files.add(asset);
+//            }
         } catch(Exception except) {
             woRuntime.HandleException(except);
         }
+
     }
 
     public String Path() {
