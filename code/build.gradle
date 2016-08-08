@@ -50,7 +50,6 @@ project(":desktop") {
 project(":core") {
     apply plugin: "java"
 
-
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
@@ -59,6 +58,8 @@ project(":core") {
         compile "net.dermetfan.libgdx-utils:libgdx-utils:0.13.3"
         compile "net.dermetfan.libgdx-utils:libgdx-utils-box2d:0.13.3"
         compile "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.1.0"
+
+        compile fileTree(dir: '/Volumes/exec/work/projects/woa2016/code/core/src/bytetroll/woa2016/thirdparty/commonsio/', include: 'commons-io-2.5.jar')
     }
 }
 

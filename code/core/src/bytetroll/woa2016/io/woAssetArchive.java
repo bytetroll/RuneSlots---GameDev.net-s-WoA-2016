@@ -111,7 +111,7 @@ public class woAssetArchive {
             tempFile.deleteOnExit();
 
             try(FileOutputStream out = new FileOutputStream(tempFile)) {
-                org.apache.commons.io.IOUtils.copy(in, out);
+                IOUtils.copy(in, out);
             }
 
             ++tempFileCount;
