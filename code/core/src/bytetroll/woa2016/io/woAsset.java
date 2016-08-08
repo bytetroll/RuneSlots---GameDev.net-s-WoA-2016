@@ -2,9 +2,6 @@ package bytetroll.woa2016.io;
 
 import com.badlogic.gdx.files.FileHandle;
 
-import java.io.File;
-import java.io.InputStream;
-
 public class woAsset {
     public woAsset() {
         name = null;
@@ -21,7 +18,7 @@ public class woAsset {
     }
 
     public FileHandle AsLibGdxHandle() {
-        return new FileHandle(gdxHandle);
+        return gdxHandle;
     }
 
     public String name;

@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class woSlotSlider extends Image {
     public woSlotSlider(int x, int y, int currentValue) {
-        super(new AnimationDrawable());
+        //super(new AnimationDrawable());
     }
 
     private String currentEffect = null;
