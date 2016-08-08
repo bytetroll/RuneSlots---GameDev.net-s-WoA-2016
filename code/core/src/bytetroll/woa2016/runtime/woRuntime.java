@@ -1,7 +1,5 @@
 package bytetroll.woa2016.runtime;
 
-import bytetroll.woa2016.woMain;
-
 import java.io.File;
 import java.net.URLDecoder;
 import java.security.CodeSource;
