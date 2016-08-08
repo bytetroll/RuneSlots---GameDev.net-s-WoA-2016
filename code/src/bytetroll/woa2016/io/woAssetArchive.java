@@ -1,6 +1,7 @@
 package bytetroll.woa2016.io;
 
 import bytetroll.woa2016.runtime.woRuntime;
+import bytetroll.woa2016.sys.woSys;
 
 import java.util.*;
 import java.util.zip.ZipEntry;
@@ -17,10 +18,19 @@ public class woAssetArchive {
             for(Enumeration iter = archive.entries(); iter.hasMoreElements();) {
                 final ZipEntry file = (ZipEntry)iter.nextElement();
 
+                if(woSys.IsOSX()) {
+                    // Skip Apple's crapp meta folders that automatically get packed into all zips.
+                    if(file.getName().contains("__MACOSX")) {
+                        continue;
+                    }
+                }
+
                 woAsset asset = new woAsset();
-                asset.name = file.getName();
+                asset.name = woPath.GetFilename(file.getName());
                 asset.archiveName = woPath.GetFilename(path);
                 asset.data = archive.getInputStream(file);
+
+                files.add(asset);
             }
         } catch(Exception except) {
             woRuntime.HandleException(except);
@@ -29,6 +39,10 @@ public class woAssetArchive {
 
     public String Path() {
         return path;
+    }
+
+    public List<woAsset> Files() {
+        return files;
     }
 
     private String path;

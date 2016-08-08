@@ -8,4 +8,7 @@ public class woRuntime {
         except.printStackTrace();
         System.exit(-1);
     }
+
+    public static <T extends Throwable> void SuppressException(final T except) {
+    }
 }

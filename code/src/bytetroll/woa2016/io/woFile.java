@@ -44,21 +44,29 @@ public class woFile {
             }
         }
 
-        String[] pathTokens = handle.getName().split("/.(?=[^/.]+$)");
-        info.name = pathTokens[0];
+        info.name = path.substring((path.lastIndexOf(File.separator) + 1), path.lastIndexOf("."));
+        info.ext = path.substring(path.lastIndexOf(".") + 1);
+        info.nameWithExt = info.name + "." + info.ext;
+        info.parentDirPath = handle.getParent();
+        info.path = path;
+
+        /*
+        String[] filenameTokens = handle.getName().split("/.(?=[^/.]+$)");
+        info.name = filenameTokens[0];
 
         boolean isHiddenFile = false;
-        if(pathTokens.length == 1) {
+        if(filenameTokens.length == 0) {
             // We have found a hidden file.  this is usually because we are on a posix system
             // and the filenamestarted with a "."
             info.ext = HIDDEN_FILE;
             isHiddenFile = true;
         } else {
-            info.ext = pathTokens[1];
+            info.ext = filenameTokens[1];
         }
-        info.nameWithExt = pathTokens[0] + (isHiddenFile ? "" : pathTokens[1]);
+        info.nameWithExt = filenameTokens[0] + (isHiddenFile ? "" : filenameTokens[1]);
         info.parentDirPath = handle.getParent();
         info.path = path;
+        */
     }
 
     private woFile() {

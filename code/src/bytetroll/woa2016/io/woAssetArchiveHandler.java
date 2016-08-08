@@ -2,8 +2,11 @@ package bytetroll.woa2016.io;
 
 import bytetroll.woa2016.runtime.woRuntime;
 
+import static java.nio.file.FileVisitResult.*;
+
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -19,24 +22,40 @@ public class woAssetArchiveHandler {
     // This will work for us since we won't have many assets, but
     // caching all asset archive files into memory at once is a shitty
     // idea!
-
-    //@Todo: See here also for the "finish the asset handler" todo.  Also,
-    //       remember to remove this comment ;)
     public static void CacheAllInAssetDirectory() {
         class woAssetDirectoryWalker extends SimpleFileVisitor<Path> {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attr) {
+                if(attr.isRegularFile()) {
+                    String path = "";
+                    try {
+                         path = file.toRealPath().toString(); //.toAbsolutePath().toString();
+                    } catch(Exception except) {
+                    }
+
+                    if(woPath.GetFileExt(path).equals("paa")) {
+                        cachedArchives.add(new woAssetArchive(path));
+                    }
+                }
+
+                return CONTINUE;
             }
 
             @Override
             public FileVisitResult postVisitDirectory(Path dir, IOException except) {
-
+                return CONTINUE;
             }
 
             @Override
             public FileVisitResult visitFileFailed(Path file, IOException except) {
-
+                return CONTINUE;
             }
+        }
+
+        try {
+            Files.walkFileTree(woPath.FromString("./woa2016"), new woAssetDirectoryWalker());
+        } catch(Exception except) {
+            woRuntime.HandleException(except);
         }
     }
 
@@ -54,23 +73,21 @@ public class woAssetArchiveHandler {
     }
 
     public static void UnloadArchive(String name) {
-        try {
-            int i = 0;
-            do {
+        int i = 0;
+        do {
+            try {
                 final woAssetArchive archive = cachedArchives.get(i);
 
                 if (name.equals(woPath.GetFilename(archive.Path()))) {
                     cachedArchives.remove(i);
                     return;
                 }
+            } catch(Exception except) {
+                continue;
+            }
 
-                i++;
-            } while (i != cachedArchives.size());
-
-            throw new Exception("woAssetArchiveHandler tried to unload an asset archive that doesn't exist");
-        } catch(Exception except) {
-            woRuntime.HandleException(except);
-        }
+            i++;
+        } while (i != cachedArchives.size());
     }
 
     public static void FlushCache() {
@@ -96,6 +113,10 @@ public class woAssetArchiveHandler {
         }
 
         return null; // Never executed.
+    }
+
+    public static List<woAssetArchive> Cache() {
+        return cachedArchives;
     }
 
     public static String assetDir = null;
