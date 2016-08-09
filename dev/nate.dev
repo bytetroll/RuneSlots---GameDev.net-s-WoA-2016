@@ -1,0 +1,5 @@
+Things to fix
+———————————————————————————
+1. The filesystem is crashing when trying to load an archive that contains zipped
+   directories.  Either write a tool to correctly pack the archives, or find a way
+   to handle the directories.

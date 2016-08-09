@@ -1,9 +1,11 @@
 package bytetroll.woa2016.io;
 
 import bytetroll.woa2016.cli.woCLI;
+import bytetroll.woa2016.runtime.woDebug;
 import bytetroll.woa2016.runtime.woRuntime;
 import bytetroll.woa2016.sys.woSys;
 
+import bytetroll.woa2016.woBuildConfig;
 import com.badlogic.gdx.files.FileHandle;
 
 import org.apache.commons.io.IOUtils;
@@ -34,6 +36,10 @@ public class woAssetArchive {
                     }
                 }
 
+                if(file.isDirectory()) {
+                    continue;
+                }
+
                 woAsset asset = new woAsset();
                 asset.name = woPath.GetFilename(file.getName());
                 asset.archiveName = woPath.GetFilename(path);
@@ -48,7 +54,11 @@ public class woAssetArchive {
                 if(woIO.FileExists(file.getName())) {
                     woIO.DeleteFile(file.getName());
 
-                    woCLI.PrintLine("Deleted file " + file.getName());
+                    if(woBuildConfig.IsDebugBuild.Get()) {
+                        woCLI.PrintLine("Deleted file " + file.getName());
+
+                        woDebug.LogInfo("Detected unprotected asset file \"" + file.getName() + "\" -- correcting.");
+                    }
                 }
 
                 files.add(asset);
