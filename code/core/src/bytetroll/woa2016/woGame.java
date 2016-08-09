@@ -22,7 +22,7 @@ public class woGame extends ApplicationAdapter {
 
         final woAsset font = woAssetHandler.Find("default.fnt");
         final woAsset tex = woAssetHandler.Find("bg_btn5.png");
-        scene.SpawnActor(new woLabel("Whoop!", font, tex));
+        scene.SpawnActor(new woLabel("Hi!", font, tex));
 	}
 
 	@Override
