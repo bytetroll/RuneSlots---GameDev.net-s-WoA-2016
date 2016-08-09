@@ -9,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class woCanvasElementDataTypeImage extends Image implements woCanvasElementData {
     public woCanvasElementDataTypeImage(woCanvasTexture texture) {
         woCanvasElementData.Type.set(woCanvasElementDataType.IMAGE);
-        woCanvasElementData.Data.set(this);
+        woCanvasElementData.Data.set(texture);
 
     }
 }
