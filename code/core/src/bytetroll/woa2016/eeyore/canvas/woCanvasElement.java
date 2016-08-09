@@ -15,9 +15,12 @@ public abstract class woCanvasElement {
     public final woProperty<woVector2> Position = new woProperty<>(woVector2.VEC2_ZERO);
     public final woProperty<String> Name = new woProperty<>(null);
     public final woProperty<woCanvasElementData> Data = new woProperty<>(null);
+
     //----------------------------------------------------------------------------
     // END PROPERTIES
     //----------------------------------------------------------------------------
+    public woCanvasElement() {
+    }
 
     public woCanvasElement(String name, woCanvasElementData data) {
         Name.set(name);
@@ -29,6 +32,20 @@ public abstract class woCanvasElement {
     }
 
     @woOverridable
+    public void Think(float delta) {
+    }
+
+    @woOverridable
+    public void Draw() {
+    }
+
+    @woOverridable
     public void Invalidate() {
+    }
+
+    protected woCanvasElement(String name, woVector2 pos, woCanvasElementData data) {
+        Name.set(name);
+        Position.set(pos);
+        Data.set(data);
     }
 }

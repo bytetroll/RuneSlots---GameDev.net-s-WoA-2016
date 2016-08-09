@@ -1,4 +1,4 @@
-package bytetroll.woa2016.eeyore.controls;
+package bytetroll.woa2016.eeyore;
 
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,6 +18,22 @@ public class woCanvas {
         this.scene = scene;
     }
 
+    public static void AddElement(woCanvasElement elem) {
+        sceneElements.add(elem);
+    }
+
+    public void Think(float delta) {
+        for(woCanvasElement elem : sceneElements) {
+            elem.Think(delta);
+        }
+    }
+
+    public void Draw() {
+        for(woCanvasElement elem : sceneElements) {
+            elem.Draw();
+        }
+    }
+
     private Stage scene = null;
-    private List<woCanvasElement> sceneElements = new ArrayList<>();
+    private static List<woCanvasElement> sceneElements = new ArrayList<>();
 }
