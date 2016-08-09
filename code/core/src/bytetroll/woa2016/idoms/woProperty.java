@@ -21,7 +21,7 @@ public class woProperty<T> {
     //    ProcessInitializerList(initList);
     //}
 
-    public T get() {
+    public T Get() {
         try {
             if(verifyBeforeGet) {
                 if(value.equals(null)) {
@@ -36,7 +36,7 @@ public class woProperty<T> {
         return value;
     }
 
-    public void set(T value) {
+    public void Set(T value) {
         this.value = value;
     }
 

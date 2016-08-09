@@ -17,7 +17,6 @@ public class woGame extends ApplicationAdapter {
 		woAssetArchiveHandler.CacheAllInAssetDirectory();
 
         scene = new woScene();
-        scene.SpawnActor(new woCanvas());
         scene.SpawnActor(new woImageView(woAssetHandler.Find("background.png"), woVector2.VEC2_ZERO));
 	}
 

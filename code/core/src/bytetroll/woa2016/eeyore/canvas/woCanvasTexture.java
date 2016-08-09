@@ -1,5 +1,7 @@
 package bytetroll.woa2016.eeyore.canvas;
 
+import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementData;
+import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementDataType;
 import bytetroll.woa2016.io.woAsset;
 
 import com.badlogic.gdx.graphics.GLTexture;
@@ -7,13 +9,24 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class woCanvasTexture extends Image {
+    public woCanvasTexture() {
+    }
+
     public woCanvasTexture(Texture texture) {
         super(texture);
         this.texture = texture;
     }
 
     public woCanvasTexture(woAsset tex) {
-        AssetAsTexture(tex);
+        texture = AssetAsTexture(tex);
+    }
+
+    public woCanvasTexture(woCanvasElementData data) {
+        texture = ElementDataAsTexture(data);
+    }
+
+    private Texture ElementDataAsTexture(Object data) {
+        return ((woCanvasTexture)data).AsTexture();
     }
 
     public woCanvasTexture FromAsset(woAsset tex) {

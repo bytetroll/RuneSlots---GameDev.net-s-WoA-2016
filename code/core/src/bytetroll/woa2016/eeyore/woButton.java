@@ -7,15 +7,13 @@ import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-
 public class woButton extends woCanvasElement {
     public final woProperty<woCanvasTexture> Texture = new woProperty<>(null);
     public final woProperty<String> ButtonText = new woProperty<>(null);
 
     public woButton(woAsset texture, woVector2 pos) {
-        super.Data.set(new woCanvasElementDataTypeImage(new woCanvasTexture(texture)));
-        super.Position.set(pos);
+        super.ElementData.Set(new woCanvasElementDataTypeImage(new woCanvasTexture(texture)));
+        super.Position.Set(pos);
 
     }
 
@@ -25,15 +23,15 @@ public class woButton extends woCanvasElement {
     }
 
     @Override
-    public void Draw() {
-        super.Draw();
+    public void Draw(woCanvasElementDrawPacket packet) {
+        super.Draw(packet);
     }
 
     /*
     public woButton(woAsset texture, woVector2 pos, Stage scene) {
         //super(new woCanvasTextureAnimation(1, 1, 64, 64, 0, texture));
 
-        Texture.set(new woImageView(new woCanvasTexture(texture));
+        Texture.Set(new woImageView(new woCanvasTexture(texture));
 
         this.scene = scene;
 

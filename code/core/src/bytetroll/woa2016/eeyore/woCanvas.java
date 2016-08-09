@@ -1,6 +1,7 @@
 package bytetroll.woa2016.eeyore;
 
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -12,9 +13,6 @@ import java.util.List;
 // and update the containing elements.
 
 public class woCanvas extends Actor {
-    public woCanvas() {
-    }
-
     public woCanvas(Stage scene) {
         this.scene = scene;
     }
@@ -22,6 +20,7 @@ public class woCanvas extends Actor {
     public void AddElement(woCanvasElement elem) {
         sceneElements.add(elem);
     }
+
 
     public void Think(float delta) {
         for(woCanvasElement elem : sceneElements) {
@@ -31,7 +30,7 @@ public class woCanvas extends Actor {
 
     public void Draw() {
         for(woCanvasElement elem : sceneElements) {
-            elem.Draw();
+            elem.Draw(scene);
         }
     }
 

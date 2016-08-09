@@ -8,8 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class woScene {
     public woScene() {
-        this.scene = scene;
         Gdx.input.setInputProcessor(scene);
+
+        ui = new woCanvas(scene);
     }
 
     public void SpawnActor(Actor actor) {

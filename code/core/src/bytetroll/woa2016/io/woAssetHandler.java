@@ -43,7 +43,7 @@ public class woAssetHandler {
             } while (i != cachedAssets.size());
             return null;
         } catch(Exception except) {
-            // Ignore thrown exception from chacedAssets.get if the file can't be found.
+            // Ignore thrown exception from chacedAssets.Get if the file can't be found.
         }
 
         return null;

@@ -28,7 +28,7 @@ public class woAssetArchive {
                 final ZipEntry file = entries.nextElement();
 
                 if(woSys.IsOSX()) {
-                    // Skip Apple's crapp meta folders that automatically get packed into all zips.
+                    // Skip Apple's crapp meta folders that automatically Get packed into all zips.
                     if(file.getName().contains("__MACOSX")) {
                         continue;
                     }
@@ -59,7 +59,7 @@ public class woAssetArchive {
 //
 //            while((file = zStream.getNextEntry()) != null) {
 //                if(woSys.IsOSX()) {
-//                    // Skip Apple's crapp meta folders that automatically get packed into all zips.
+//                    // Skip Apple's crapp meta folders that automatically Get packed into all zips.
 //                    if(file.getName().contains("__MACOSX")) {
 //                        continue;
 //                    }
