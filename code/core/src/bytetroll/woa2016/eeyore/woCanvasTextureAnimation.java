@@ -1,18 +1,17 @@
-package bytetroll.woa2016.game.ui.internal;
+package bytetroll.woa2016.eeyore;
 
+import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.io.woAsset;
-import bytetroll.woa2016.math.woVector2;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable;
 
 
-public class woAnimation extends BaseDrawable {
-    public woAnimation(int frameColumns, int frameRows, int width, int height, int currentRowAnim, woAsset texture) {
+public class woCanvasTextureAnimation extends BaseDrawable {
+    public woCanvasTextureAnimation(int frameColumns, int frameRows, int width, int height, int currentRowAnim,
+            woCanvasTexture texture) {
         this.frameColumns = frameColumns;
         this.frameRows = frameRows;
         this.width = width;
@@ -78,5 +77,5 @@ public class woAnimation extends BaseDrawable {
     private boolean looped = false;
 
     private Animation anims[] = null;
-    private woAsset texture = null;
+    private woCanvasTexture texture = null;
 }

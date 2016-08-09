@@ -34,7 +34,6 @@ public class woAssetArchive {
                     }
                 }
 
-
                 // This is a shitty way to have to do this, but not matter what, Java will not
                 // Stop extracting files that have been read.
                 final String extractedPath = woRuntime.ExecutionPath() + file.getName();
@@ -101,7 +100,8 @@ public class woAssetArchive {
         return files;
     }
 
-    private ZipInputStream LookupFile(ZipInputStream zStream, String entry) {
+    /*
+    internal ZipInputStream LookupFile(ZipInputStream zStream, String entry) {
         // Iterating the zStream will position the input stream iterator to the
         // currently processed entry, which is controlled by getNextEntry.
         try {
@@ -117,10 +117,9 @@ public class woAssetArchive {
         return null; // Never executed.
     }
 
-    /*
     // Have to be careful with this.  Right now, it is our only option, but it could cause memory to run low
     // on larger files.
-    private InputStream ConvertZStreamToIStream(ZipInputStream in) {
+    internal InputStream ConvertZStreamToIStream(ZipInputStream in) {
         try {
             final int bufferSize = 2048;
             int count = 0;

@@ -1,6 +1,8 @@
 package bytetroll.woa2016.math;
 
 public class woVector2 {
+    public static final woVector2 VEC2_ZERO = new woVector2(0.0f, 0.0f);
+
     public woVector2() {
     }
 
@@ -19,6 +21,6 @@ public class woVector2 {
         y = 0.0f;
     }
 
-    public float x = 0;
-    public float y = 0;
+    public float x = 0.0f;
+    public float y = 0.0f;
 }

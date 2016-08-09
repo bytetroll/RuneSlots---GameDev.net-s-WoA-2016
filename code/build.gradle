@@ -59,6 +59,7 @@ project(":core") {
         compile "net.dermetfan.libgdx-utils:libgdx-utils-box2d:0.13.3"
         compile "de.tomgrill.gdxdialogs:gdx-dialogs-core:1.1.0"
 
+        // https://www.google.com/search?q=.grade%20comments#q=Grade+file+comments
         compile fileTree(dir: '/Volumes/exec/work/projects/woa2016/code/core/src/bytetroll/woa2016/thirdparty/commonsio/', include: 'commons-io-2.5.jar')
     }
 }
