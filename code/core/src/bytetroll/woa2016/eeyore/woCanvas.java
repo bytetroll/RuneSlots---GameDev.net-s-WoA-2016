@@ -1,6 +1,7 @@
 package bytetroll.woa2016.eeyore;
 
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.List;
 // Generally, a game will contain one canvas for the UI, which will register, draw,
 // and update the containing elements.
 
-public class woCanvas {
+public class woCanvas extends Actor {
     public woCanvas() {
     }
 
@@ -18,7 +19,7 @@ public class woCanvas {
         this.scene = scene;
     }
 
-    public static void AddElement(woCanvasElement elem) {
+    public void AddElement(woCanvasElement elem) {
         sceneElements.add(elem);
     }
 

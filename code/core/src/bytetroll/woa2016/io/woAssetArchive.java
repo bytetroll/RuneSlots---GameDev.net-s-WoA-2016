@@ -34,15 +34,6 @@ public class woAssetArchive {
                     }
                 }
 
-                // This is a shitty way to have to do this, but not matter what, Java will not
-                // Stop extracting files that have been read.
-                final String extractedPath = woRuntime.ExecutionPath() + file.getName();
-                if(woIO.FileExists(extractedPath)) {
-                    woIO.DeleteFile(extractedPath);
-
-                    woCLI.PrintLine("Deleted file " + extractedPath);
-                }
-
                 woAsset asset = new woAsset();
                 asset.name = woPath.GetFilename(file.getName());
                 asset.archiveName = woPath.GetFilename(path);
@@ -50,6 +41,14 @@ public class woAssetArchive {
                 final InputStream iStream = archive.getInputStream(file);
                 asset.gdxHandle = new FileHandle(BuildVirtualFile(iStream));
                 asset.data.stream = woDataStream.InputStreamToByteInputStream(iStream);
+
+                // This is a shitty way to have to do this, but not matter what, Java will not
+                // Stop extracting files that have been read.
+                if(woIO.FileExists(file.getName())) {
+                    woIO.DeleteFile(file.getName());
+
+                    woCLI.PrintLine("Deleted file " + file.getName());
+                }
 
                 files.add(asset);
             }

@@ -15,7 +15,6 @@ public abstract class woCanvasElement {
     public final woProperty<woVector2> Position = new woProperty<>(woVector2.VEC2_ZERO);
     public final woProperty<String> Name = new woProperty<>(null);
     public final woProperty<woCanvasElementData> Data = new woProperty<>(null);
-
     //----------------------------------------------------------------------------
     // END PROPERTIES
     //----------------------------------------------------------------------------
