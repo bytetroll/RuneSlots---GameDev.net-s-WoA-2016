@@ -6,6 +6,7 @@ import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.io.woAssetHandler;
+import bytetroll.woa2016.math.woVector2;
 
 public class woLabel extends woCanvasElement {
     public final woProperty<String> Text = new woProperty<String>(null);
@@ -18,6 +19,11 @@ public class woLabel extends woCanvasElement {
 
         // Lib GDX always stores their binary font files as a .fnt and an accompanying .png.
         fontGlyphImage = woAssetHandler.Find(font.name.replaceFirst("[.][^.]+$", "") + ".png");
+    }
+
+    @Override
+    public void Think(float delta) {
+        super.Position.Set(new woVector2((super.Position.Get().x += delta) * 1.1f, super.Position.Get().y));
     }
 
     @Override
