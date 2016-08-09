@@ -55,9 +55,7 @@ public class woAssetArchive {
                     woIO.DeleteFile(file.getName());
 
                     if(woBuildConfig.IsDebugBuild.Get()) {
-                        woCLI.PrintLine("Deleted file " + file.getName());
-
-                        woDebug.LogInfo("Detected unprotected asset file \"" + file.getName() + "\" -- correcting.");
+                        woDebug.LogWarning("Detected unprotected asset file \"" + file.getName() + "\" -- correcting.");
                     }
                 }
 
