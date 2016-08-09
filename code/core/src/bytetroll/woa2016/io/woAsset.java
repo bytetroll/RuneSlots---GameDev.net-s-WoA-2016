@@ -7,14 +7,16 @@ public class woAsset {
         name = null;
         archiveName = null;
         gdxHandle = null;
+        virtualFilePath = null;
         data = new woAssetDataStream();
     }
 
     public woAsset(woAsset asset) {
-        this.name = asset.name;
-        this.archiveName = asset.archiveName;
-        this.data = asset.data;
-        this.gdxHandle = asset.gdxHandle;
+        name = asset.name;
+        archiveName = asset.archiveName;
+        virtualFilePath = asset.virtualFilePath;
+        data = asset.data;
+        gdxHandle = asset.gdxHandle;
     }
 
     public FileHandle AsLibGdxHandle() {
@@ -23,6 +25,7 @@ public class woAsset {
 
     public String name;
     public String archiveName;
+    public String virtualFilePath = null;
     public woAssetDataStream data;
 
     public FileHandle gdxHandle = null;

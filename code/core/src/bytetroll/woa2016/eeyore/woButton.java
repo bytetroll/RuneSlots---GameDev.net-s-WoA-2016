@@ -24,7 +24,9 @@ public class woButton extends woCanvasElement {
 
     @Override
     public void Draw(woCanvasElementDrawPacket packet) {
-        super.Draw(packet);
+        super.BeginDrawing(packet);
+        // Shit goes hur.
+        super.EndDrawing(packet);
     }
 
     /*

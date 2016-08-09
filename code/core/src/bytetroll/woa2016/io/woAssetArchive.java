@@ -41,6 +41,7 @@ public class woAssetArchive {
                 final InputStream iStream = archive.getInputStream(file);
                 asset.gdxHandle = new FileHandle(BuildVirtualFile(iStream));
                 asset.data.stream = woDataStream.InputStreamToByteInputStream(iStream);
+                asset.virtualFilePath = asset.gdxHandle.path();
 
                 // This is a shitty way to have to do this, but not matter what, Java will not
                 // Stop extracting files that have been read.

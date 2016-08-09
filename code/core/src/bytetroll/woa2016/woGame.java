@@ -2,7 +2,9 @@ package bytetroll.woa2016;
 
 import bytetroll.woa2016.eeyore.woCanvas;
 import bytetroll.woa2016.eeyore.woImageView;
+import bytetroll.woa2016.eeyore.woLabel;
 import bytetroll.woa2016.game.woScene;
+import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.io.woAssetArchiveHandler;
 import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
@@ -17,7 +19,10 @@ public class woGame extends ApplicationAdapter {
 		woAssetArchiveHandler.CacheAllInAssetDirectory();
 
         scene = new woScene();
-        scene.SpawnActor(new woImageView(woAssetHandler.Find("background.png"), woVector2.VEC2_ZERO));
+
+        final woAsset font = woAssetHandler.Find("default.fnt");
+        final woAsset tex = woAssetHandler.Find("bg_btn5.png");
+        scene.SpawnActor(new woLabel("Whoop!", font, tex));
 	}
 
 	@Override
