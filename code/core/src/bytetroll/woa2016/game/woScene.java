@@ -10,7 +10,7 @@ public class woScene {
     public woScene() {
         Gdx.input.setInputProcessor(scene);
 
-        ui = new woCanvas(scene);
+        ui = new woCanvas(scene, scene.getCamera());
     }
 
     public void SpawnActor(Actor actor) {

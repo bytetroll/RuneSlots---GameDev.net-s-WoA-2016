@@ -1,5 +1,6 @@
 package bytetroll.woa2016.eeyore;
 
+import bytetroll.woa2016.cli.woCLI;
 import bytetroll.woa2016.eeyore.canvas.internal.specialized.woCanvasElementDataTypeImage;
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizationJob;
@@ -78,7 +79,8 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
 
     @Override
     public boolean OnMouseDown(String elemName, woVector2 pos, int pointer, int button) {
-        return false;
+        woCLI.PrintLine("Canvas element: " + elemName + " was cliked");
+        return true;
     }
 
 
