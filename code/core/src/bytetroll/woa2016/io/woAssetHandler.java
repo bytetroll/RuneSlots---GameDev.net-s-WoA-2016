@@ -1,5 +1,6 @@
 package bytetroll.woa2016.io;
 
+import bytetroll.woa2016.runtime.woDebug;
 import bytetroll.woa2016.runtime.woRuntime;
 
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ public class woAssetHandler {
             if(asset != null) {
                 return asset;
             }
+
+            woDebug.LogInfo(name + " has not yet been cached... caching.");
 
             for(woAssetArchive archive : woAssetArchiveHandler.Cache()) {
                 for(woAsset packedAsset : archive.Files()) {

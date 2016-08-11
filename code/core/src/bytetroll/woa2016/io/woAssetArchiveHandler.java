@@ -1,5 +1,6 @@
 package bytetroll.woa2016.io;
 
+import bytetroll.woa2016.runtime.woDebug;
 import bytetroll.woa2016.runtime.woRuntime;
 
 import static java.nio.file.FileVisitResult.*;
@@ -23,6 +24,8 @@ public class woAssetArchiveHandler {
     // caching all asset archive files into memory at once is a shitty
     // idea!
     public static void CacheAllInAssetDirectory() {
+        woDebug.LogWarning("Caching all asset files in asset directory.");
+
         class woAssetDirectoryWalker extends SimpleFileVisitor<Path> {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attr) {

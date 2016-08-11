@@ -24,4 +24,4 @@ ren "desktop-1.0.jar" "woa2016.jar"
 
 cd "woa2016"
 
-mv "thirdparty.txt" "../"
+move "thirdparty.txt" "../"

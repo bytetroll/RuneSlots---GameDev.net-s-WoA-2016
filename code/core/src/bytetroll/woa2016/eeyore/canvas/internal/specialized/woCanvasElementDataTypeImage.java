@@ -13,4 +13,8 @@ public class woCanvasElementDataTypeImage extends Image implements woCanvasEleme
         woCanvasElementData.Type.Set(woCanvasElementDataType.IMAGE);
         woCanvasElementData.Buffer.Set(texture);
     }
+
+    @Override
+    public void Destruct() {
+    }
 }

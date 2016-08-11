@@ -2,10 +2,12 @@ package bytetroll.woa2016.audio;
 
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
+import bytetroll.woa2016.memory.woDestructible;
+import bytetroll.woa2016.memory.woDestructor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
-public class woSound {
+public class woSound implements woDestructible {
     public final woProperty<Sound> Clip = new woProperty<>(null);
     public final woProperty<Long> ID = new woProperty<>(0L);
     public final woProperty<Float> Volume = new woProperty<>(100.0f);
@@ -13,8 +15,20 @@ public class woSound {
 
     public woSound(woAsset sound) {
         Clip.Set(Gdx.audio.newSound(sound.AsLibGdxHandle()));
+
+        woDestructor.AddDestructible(this);
     }
 
+    //==================================================================================================================
+    //>> BEGIN DESTRUCTIBLE INTERFACE
+    //==================================================================================================================
+    @Override
+    public void Destruct() {
+        Clip.Get().dispose();
+    }
+    //==================================================================================================================
+    //>> END DESTRUCTIBLE INTERFACE
+    //==================================================================================================================
 
     public woSound Volume(float volume) {
         Volume.Set(volume);

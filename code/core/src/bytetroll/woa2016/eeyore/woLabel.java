@@ -11,6 +11,7 @@ import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
+import bytetroll.woa2016.memory.woDestructible;
 import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 import bytetroll.woa2016.runtime.woRuntime;
 import com.badlogic.gdx.graphics.Pixmap;

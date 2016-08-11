@@ -3,6 +3,7 @@ package bytetroll.woa2016.eeyore.canvas;
 // Base class for anything that needs to be added to a canvas.  This is the parent
 // for all UI controls.
 
+import bytetroll.woa2016.memory.woDestructible;
 import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementData;

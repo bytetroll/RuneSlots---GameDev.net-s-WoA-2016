@@ -2,16 +2,31 @@ package bytetroll.woa2016;
 
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.eeyore.woCanvas;
+import bytetroll.woa2016.memory.woDestructible;
+import bytetroll.woa2016.memory.woDestructor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class woScene {
+public class woScene implements woDestructible {
     public woScene() {
         Gdx.input.setInputProcessor(scene);
 
         ui = new woCanvas(scene, scene.getCamera());
+
+        woDestructor.AddDestructible(this);
     }
+
+    //==================================================================================================================
+    //>> BEGIN DESTRUCTIBLE INTERFACE
+    //==================================================================================================================
+    @Override
+    public void Destruct() {
+        scene.dispose();
+    }
+    //==================================================================================================================
+    //>> END DESTRUCTIBLE INTERFACE
+    //==================================================================================================================
 
     public void SpawnActor(Actor actor) {
         scene.addActor(actor);
@@ -39,10 +54,6 @@ public class woScene {
         if(ui != null) {
             ui.Draw();
         }
-    }
-
-    public void Destroy() {
-        scene.dispose();
     }
 
     //public static Stage GetWorld() {

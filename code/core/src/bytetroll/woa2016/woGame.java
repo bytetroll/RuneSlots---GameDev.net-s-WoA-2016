@@ -5,6 +5,7 @@ import bytetroll.woa2016.eeyore.woImageView;
 import bytetroll.woa2016.io.woAssetArchiveHandler;
 import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
+import bytetroll.woa2016.memory.woDestructor;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.FPSLogger;
@@ -51,8 +52,8 @@ public class woGame extends ApplicationAdapter {
 	
 	@Override
 	public void dispose () {
-	    scene.Destroy();
-	}
+        woDestructor.DestoryAll();
+    }
 
 	private woScene scene = null;
 
