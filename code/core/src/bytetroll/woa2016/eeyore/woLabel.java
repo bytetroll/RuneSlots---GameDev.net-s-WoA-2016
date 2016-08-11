@@ -13,6 +13,7 @@ import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
 import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 import bytetroll.woa2016.runtime.woRuntime;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
@@ -54,19 +55,19 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
     }
 
     @Override
-    public boolean OnKeyDown(String elemName, int keyCode) {
+    public boolean OnKeyDown(int keyCode) {
         return false;
     }
 
 
     @Override
-    public boolean OnKeyUp(String elemName, int keyCode) {
+    public boolean OnKeyUp(int keyCode) {
         return false;
     }
 
 
     @Override
-    public boolean OnKeyTyped(String elemName, char ch) {
+    public boolean OnKeyTyped(char ch) {
         return false;
     }
 

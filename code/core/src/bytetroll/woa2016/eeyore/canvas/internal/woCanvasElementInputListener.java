@@ -6,22 +6,22 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
 public interface woCanvasElementInputListener {
     @woOverridable
-    public boolean OnKeyDown(String elemName, int keyCode);
+    public boolean OnKeyDown(int keyCode);
 
 
     @woOverridable
-    public boolean OnKeyUp(String elemName, int keyCode);
+    public boolean OnKeyUp(int keyCode);
 
 
     @woOverridable
-    public boolean OnKeyTyped(String elemName, char ch);
+    public boolean OnKeyTyped(char ch);
 
 
     @woOverridable
     public boolean OnMouseUp(String elemName, woVector2 pos, int pointer, int button);
 
     @woOverridable
-    public boolean OnMouseDown(String elemName,  woVector2 pos, int pointer, int button);
+    public boolean OnMouseDown(String elemName, woVector2 pos, int pointer, int button);
 
     @woOverridable
     public boolean OnTouchDragged(String elemName, woVector2 pos, int pointer);
@@ -30,6 +30,6 @@ public interface woCanvasElementInputListener {
     public boolean OnMouseMoved(String elemName, woVector2 pos);
 
     @woOverridable
-    public boolean OnScrolled(String name, int amount);
+    public boolean OnScrolled(String elemName, int amount);
 
 }

@@ -47,20 +47,31 @@ public class woCanvas extends Actor implements InputProcessor {
         }
     }
 
-    public boolean keyDown(int keycode) {
-        return false;
+    public boolean keyDown(int keyCode) {
+        for(woCanvasElement elem : sceneElements) {
+            elem.InputHook.Get().OnKeyDown(keyCode);
+        }
+
+        return true;
     }
 
-    public boolean keyUp(int keycode) {
-        return false;
+    public boolean keyUp(int keyCode) {
+        for(woCanvasElement elem : sceneElements) {
+            elem.InputHook.Get().OnKeyUp(keyCode);
+        }
+
+        return true;
     }
 
-    public boolean keyTyped(char character) {
-        return false;
+    public boolean keyTyped(char ch) {
+        for(woCanvasElement elem : sceneElements) {
+            elem.InputHook.Get().OnKeyTyped(ch);
+        }
+
+        return true;
     }
 
     public boolean touchDown(int x, int y, int pointer, int button) {
-        // Todo: determine which element was clicked on here so that we don't just call all listeners
         for(woCanvasElement elem : sceneElements) {
             final float eX = elem.Position.Get().x;
             final float eY = elem.Position.Get().y;
@@ -80,11 +91,26 @@ public class woCanvas extends Actor implements InputProcessor {
     }
 
     public boolean touchUp(int x, int y, int pointer, int button) {
-        return false;
+        for(woCanvasElement elem : sceneElements) {
+            final float eX = elem.Position.Get().x;
+            final float eY = elem.Position.Get().y;
+            final float eWidth = ((woCanvasElementDataTypeImage) elem.ElementData.Get()).Buffer.Get().AsTexture().getWidth();
+            final float eHeight = ((woCanvasElementDataTypeImage) elem.ElementData.Get()).Buffer.Get().AsTexture().getHeight();
+
+            final Vector3 proj = camera.unproject(new Vector3(x, y, 0.0f));
+            Rectangle rect = new Rectangle(eX, eY, eWidth, eHeight);
+
+            if(rect.contains(new Vector2(proj.x, proj.y))) {
+                elem.InputHook.Get().OnMouseUp(elem.Name.Get(), new woVector2(x, y), pointer, button);
+
+            }
+        }
+
+        return true;
     }
 
     public boolean touchDragged(int x, int y, int pointer) {
-        return false;
+        return true;
     }
 
     public boolean mouseMoved(int x, int y) {
