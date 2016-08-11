@@ -5,6 +5,9 @@ import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
+import bytetroll.woa2016.runtime.woRuntime;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 public class woImageView extends woCanvasElement {
     public woImageView(woAsset texture, woVector2 pos) {

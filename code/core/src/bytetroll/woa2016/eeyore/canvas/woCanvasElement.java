@@ -4,15 +4,23 @@ package bytetroll.woa2016.eeyore.canvas;
 // for all UI controls.
 
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementData;
+import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.math.woVector2;
 import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-public abstract class woCanvasElement {
+import java.util.UUID;
+
+public abstract class woCanvasElement extends Image { //implements InputProcessor {
     public class woCanvasElementDrawPacket {
         public woCanvasElementDrawPacket(Stage scene) {
             this.scene = scene;
@@ -35,15 +43,15 @@ public abstract class woCanvasElement {
     public final woProperty<woVector2> Position = new woProperty<>(woVector2.VEC2_ZERO);
     public final woProperty<String> Name = new woProperty<>(null);
     public final woProperty<woCanvasElementData> ElementData = new woProperty<>(null);
+    public final woProperty<woCanvasElementInputListener> InputHook = new woProperty<>(null);
     //----------------------------------------------------------------------------
     // END PROPERTIES
     //----------------------------------------------------------------------------
     public woCanvasElement() {
-
     }
 
-    public woCanvasElement(String name, woCanvasElementData data) {
-        Name.Set(name);
+    public woCanvasElement(woCanvasElementData data) {
+        Name.Set(String.valueOf(UUID.randomUUID()));
         ElementData.Set(data);
     }
 
@@ -85,8 +93,8 @@ public abstract class woCanvasElement {
     public void Invalidate() {
     }
 
-    protected woCanvasElement(String name, woVector2 pos, woCanvasElementData data) {
-        Name.Set(name);
+    protected woCanvasElement(woVector2 pos, woCanvasElementData data) {
+        Name.Set(String.valueOf(UUID.randomUUID()));
         Position.Set(pos);
         ElementData.Set(data);
     }

@@ -29,12 +29,12 @@ public class woAssetArchive {
             while(entries.hasMoreElements()) {
                 final ZipEntry file = entries.nextElement();
 
-                if(woSys.IsOSX()) {
-                    // Skip Apple's crapp meta folders that automatically Get packed into all zips.
-                    if(file.getName().contains("__MACOSX")) {
-                        continue;
-                    }
+                //if(woSys.IsOSX()) {
+                // Skip Apple's crapp meta folders that automatically Get packed into all zips.
+                if(file.getName().contains("__MACOSX")) {
+                    continue;
                 }
+                //}
 
                 if(file.isDirectory()) {
                     continue;
