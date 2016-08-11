@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 public class woImageView extends woCanvasElement {
     public woImageView(woAsset texture, woVector2 pos) {
-        super.ElementData.Set(new woCanvasElementDataTypeImage(new woCanvasTexture(texture)));
+        super(new woCanvasElementDataTypeImage(new woCanvasTexture(texture)));
         super.Position.Set(pos);
     }
 

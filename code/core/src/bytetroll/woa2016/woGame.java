@@ -1,5 +1,6 @@
 package bytetroll.woa2016;
 
+import bytetroll.woa2016.eeyore.woButton;
 import bytetroll.woa2016.eeyore.woCanvas;
 import bytetroll.woa2016.eeyore.woImageView;
 import bytetroll.woa2016.eeyore.woLabel;
@@ -10,6 +11,7 @@ import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -23,8 +25,8 @@ public class woGame extends ApplicationAdapter {
         final woAsset font = woAssetHandler.Find("default.fnt");
         final woAsset tex = woAssetHandler.Find("bg_btn5.png");
         scene.SpawnActor(new woLabel("Foo!", new woVector2(100, 100), font, tex));
-
 		scene.SpawnActor(new woLabel("Bar", new woVector2(500, 500), font, tex));
+        scene.SpawnActor(new woButton("Button", font, tex, new woVector2(600, 600)));
 	}
 
 	@Override
@@ -34,6 +36,10 @@ public class woGame extends ApplicationAdapter {
 
         scene.Think(Gdx.graphics.getDeltaTime());
         scene.Draw();
+
+        if(woBuildConfig.IsDebugBuild.Get()) {
+            fps.log();
+        }
 	}
 
 	@Override
@@ -54,4 +60,6 @@ public class woGame extends ApplicationAdapter {
 	}
 
 	private woScene scene = null;
+
+    private FPSLogger fps = new FPSLogger();
 }
