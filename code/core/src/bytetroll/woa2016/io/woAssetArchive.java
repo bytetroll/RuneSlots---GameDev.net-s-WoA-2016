@@ -45,7 +45,15 @@ public class woAssetArchive {
                 asset.archiveName = woPath.GetFilename(path);
 
                 final InputStream iStream = archive.getInputStream(file);
-                asset.gdxHandle = new FileHandle(BuildVirtualFile(iStream));
+
+
+                if(asset.name.contains(".mp3")) {
+                    asset.gdxHandle = new FileHandle(BuildVirtualFile(iStream, true, ".mp3"));
+                } else {
+                    asset.gdxHandle = new FileHandle(BuildVirtualFile(iStream, false, null));
+                }
+
+
                 asset.data.stream = woDataStream.InputStreamToByteInputStream(iStream);
                 asset.virtualFilePath = asset.gdxHandle.path();
 
@@ -147,9 +155,9 @@ public class woAssetArchive {
     }
     */
 
-    private File BuildVirtualFile(InputStream in) {
+    private File BuildVirtualFile(InputStream in, boolean keepFileExt, String ext) {
         try {
-            final File tempFile = File.createTempFile(("runtime_" + tempFileCount), ".fuj");
+            File tempFile = File.createTempFile(("runtime_" + tempFileCount), (keepFileExt ? ext : ".fuj"));
             tempFile.deleteOnExit();
 
             try(FileOutputStream out = new FileOutputStream(tempFile)) {

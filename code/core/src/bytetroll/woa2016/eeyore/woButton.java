@@ -11,6 +11,7 @@ import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
+import bytetroll.woa2016.runtime.woRuntime;
 
 public class woButton extends woCanvasElement implements woCanvasElementInputListener {
     public final woProperty<woAsset> FrameTexture = new woProperty<>(null);
@@ -79,7 +80,14 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
 
     @Override
     public boolean OnMouseDown(String elemName, woVector2 pos, int pointer, int button) {
-        woCLI.PrintLine("Canvas element: " + elemName + " was clkasjdlkfjskldjf");
+        previousFrameTex = (woCanvasTexture)super.Scene.Get().getActors().items[0];
+        previousFrameTex.AsTexture().dispose();
+
+        woRuntime.GarbageCollector.BeginCollection();
+
+        woCanvasTexture newTex = new woCanvasTexture(FrameTexture.Get());
+        super.Scene.Get().getActors().items[0] = newTex;
+
         return true;
     }
 
@@ -101,4 +109,6 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     }
 
     private woTextRasterizer rasterizer = new woTextRasterizer();
+
+    private woCanvasTexture previousFrameTex = null;
 }

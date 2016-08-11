@@ -1,11 +1,7 @@
 package bytetroll.woa2016;
 
-import bytetroll.woa2016.eeyore.woButton;
-import bytetroll.woa2016.eeyore.woCanvas;
+import bytetroll.woa2016.audio.woStreamedSound;
 import bytetroll.woa2016.eeyore.woImageView;
-import bytetroll.woa2016.eeyore.woLabel;
-import bytetroll.woa2016.game.woScene;
-import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.io.woAssetArchiveHandler;
 import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
@@ -13,20 +9,19 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class woGame extends ApplicationAdapter {
 	@Override
 	public void create () {
-		woAssetArchiveHandler.CacheAllInAssetDirectory();
+        woAssetArchiveHandler.CacheAllInAssetDirectory();
 
         scene = new woScene();
 
-        final woAsset font = woAssetHandler.Find("default.fnt");
-        final woAsset tex = woAssetHandler.Find("bg_btn5.png");
-        scene.SpawnActor(new woLabel("Foo!", new woVector2(100, 100), font, tex));
-		scene.SpawnActor(new woLabel("Bar", new woVector2(500, 500), font, tex));
-        scene.SpawnActor(new woButton("Button", font, tex, new woVector2(600, 600)));
+        // Spawn assets.
+        new woStreamedSound(woAssetHandler.Find("woa_audio_background_loop.mp3")).Looped(true).Volume(100).Play();
+
+
+        scene.SpawnActor(new woImageView(woAssetHandler.Find("woa_ui_slot_frame.png"), new woVector2(0, 0)));
 	}
 
 	@Override

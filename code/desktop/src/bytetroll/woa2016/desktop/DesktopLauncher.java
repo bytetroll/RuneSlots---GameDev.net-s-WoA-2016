@@ -17,6 +17,7 @@ public class DesktopLauncher {
 		config.title = woRegistry.FindString("windowing", "title", "woFramework Game");
         config.width = woRegistry.FindInt("windowing", "width", 800);
         config.height = woRegistry.FindInt("windowing", "height", 600);
+		config.resizable = false;
 
 		new LwjglApplication(new woGame(), config);
 	}

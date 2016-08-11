@@ -31,6 +31,7 @@ public class woCanvas extends Actor implements InputProcessor {
     }
 
     public void AddElement(woCanvasElement elem) {
+        elem.Scene.Set(scene);
         sceneElements.add(elem);
     }
 
@@ -82,7 +83,9 @@ public class woCanvas extends Actor implements InputProcessor {
             Rectangle rect = new Rectangle(eX, eY, eWidth, eHeight);
 
             if(rect.contains(new Vector2(proj.x, proj.y))) {
-                elem.InputHook.Get().OnMouseDown(elem.Name.Get(), new woVector2(x, y), pointer, button);
+                if(elem.InputHook.Get() != null) {
+                    elem.InputHook.Get().OnMouseDown(elem.Name.Get(), new woVector2(x, y), pointer, button);
+                }
 
             }
         }
@@ -101,7 +104,9 @@ public class woCanvas extends Actor implements InputProcessor {
             Rectangle rect = new Rectangle(eX, eY, eWidth, eHeight);
 
             if(rect.contains(new Vector2(proj.x, proj.y))) {
-                elem.InputHook.Get().OnMouseUp(elem.Name.Get(), new woVector2(x, y), pointer, button);
+                if(elem.InputHook.Get() != null) {
+                    elem.InputHook.Get().OnMouseUp(elem.Name.Get(), new woVector2(x, y), pointer, button);
+                }
 
             }
         }

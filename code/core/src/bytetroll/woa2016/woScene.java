@@ -1,4 +1,4 @@
-package bytetroll.woa2016.game;
+package bytetroll.woa2016;
 
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.eeyore.woCanvas;

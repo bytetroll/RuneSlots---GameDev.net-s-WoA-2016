@@ -3,18 +3,16 @@ package bytetroll.woa2016.eeyore.canvas;
 // Base class for anything that needs to be added to a canvas.  This is the parent
 // for all UI controls.
 
+import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
+
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementData;
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.math.woVector2;
-import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
+
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
@@ -44,6 +42,7 @@ public abstract class woCanvasElement extends Image { //implements InputProcesso
     public final woProperty<String> Name = new woProperty<>(null);
     public final woProperty<woCanvasElementData> ElementData = new woProperty<>(null);
     public final woProperty<woCanvasElementInputListener> InputHook = new woProperty<>(null);
+    public final woProperty<Stage> Scene = new woProperty<>(null);
     //----------------------------------------------------------------------------
     // END PROPERTIES
     //----------------------------------------------------------------------------
