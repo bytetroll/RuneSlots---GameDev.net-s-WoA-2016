@@ -39,12 +39,12 @@ public abstract class woCanvasElement extends Image { //implements InputProcesso
     //----------------------------------------------------------------------------
     // BEGIN PROPERTIES
     //----------------------------------------------------------------------------
-    public final woProperty<woVector2> Position = new woProperty<>(woVector2.VEC2_ZERO);
-    public final woProperty<String> Name = new woProperty<>(null);
-    public final woProperty<woCanvasElementData> ElementData = new woProperty<>(null);
-    public final woProperty<woCanvasElementInputListener> InputHook = new woProperty<>(null);
-    public final woProperty<Stage> Scene = new woProperty<>(null);
-    public final woProperty<Float> ZDepth = new woProperty<>(0.0f);
+    public woProperty<woVector2> Position = new woProperty<>(woVector2.VEC2_ZERO);
+    public woProperty<String> Name = new woProperty<>(null);
+    public woProperty<woCanvasElementData> ElementData = new woProperty<>(null);
+    public woProperty<woCanvasElementInputListener> InputHook = new woProperty<>(null);
+    public woProperty<Stage> Scene = new woProperty<>(null);
+    public woProperty<Float> ZDepth = new woProperty<>(0.0f);
     //----------------------------------------------------------------------------
     // END PROPERTIES
     //----------------------------------------------------------------------------

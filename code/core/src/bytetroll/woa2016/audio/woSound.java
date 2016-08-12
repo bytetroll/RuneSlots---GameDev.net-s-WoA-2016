@@ -8,10 +8,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
 public class woSound implements woDestructible {
-    public final woProperty<Sound> Clip = new woProperty<>(null);
-    public final woProperty<Long> ID = new woProperty<>(0L);
-    public final woProperty<Float> Volume = new woProperty<>(100.0f);
-    public final woProperty<Boolean> Looped = new woProperty<>(false);
+    public woProperty<Sound> Clip = new woProperty<>(null);
+    public woProperty<Long> ID = new woProperty<>(0L);
+    public woProperty<Float> Volume = new woProperty<>(100.0f);
+    public woProperty<Boolean> Looped = new woProperty<>(false);
 
     public woSound(woAsset sound) {
         Clip.Set(Gdx.audio.newSound(sound.AsLibGdxHandle()));

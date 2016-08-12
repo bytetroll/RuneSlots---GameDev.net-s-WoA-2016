@@ -36,8 +36,8 @@ public class woProperty<T> {
         return value;
     }
 
-    public void Set(T value) {
-        this.value = value;
+    public T Set(T value) {
+        return this.value = value;
     }
 
     //private void ProcessInitializerList(T[] initList) {

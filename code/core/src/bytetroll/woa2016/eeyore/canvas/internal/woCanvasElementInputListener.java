@@ -1,5 +1,7 @@
 package bytetroll.woa2016.eeyore.canvas.internal;
 
+import bytetroll.woa2016.idoms.woProperty;
+import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
 import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -8,14 +10,11 @@ public interface woCanvasElementInputListener {
     @woOverridable
     public boolean OnKeyDown(int keyCode);
 
-
     @woOverridable
     public boolean OnKeyUp(int keyCode);
 
-
     @woOverridable
     public boolean OnKeyTyped(char ch);
-
 
     @woOverridable
     public boolean OnMouseUp(String elemName, woVector2 pos, int pointer, int button);
@@ -38,4 +37,6 @@ public interface woCanvasElementInputListener {
     @woOverridable
     public boolean OnScrolled(String elemName, int amount);
 
+    @woOverridable
+    public boolean IsHovering();
 }

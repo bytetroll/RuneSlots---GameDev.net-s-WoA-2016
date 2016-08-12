@@ -2,6 +2,7 @@ package bytetroll.woa2016.eeyore;
 
 import bytetroll.woa2016.cli.woCLI;
 import bytetroll.woa2016.eeyore.canvas.internal.specialized.woCanvasElementDataTypeImage;
+import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.math.woVector2;
 import com.badlogic.gdx.Gdx;
@@ -128,15 +129,16 @@ public class woCanvas extends Actor implements InputProcessor {
             final float eHeight = ((woCanvasElementDataTypeImage) elem.ElementData.Get()).Buffer.Get().AsTexture().getHeight();
 
             final Vector3 proj = camera.unproject(new Vector3(x, y, 0.0f));
-            Rectangle rect = new Rectangle(x, y, eWidth, eHeight);
+            Rectangle rect = new Rectangle(elem.Position.Get().x, elem.Position.Get().y, eWidth, eHeight);
 
+            woCanvasElementInputListener Listener = elem.InputHook.Get();
             if(rect.contains(new Vector2(proj.x, proj.y))) {
-                if(elem.InputHook.Get() != null) {
-                    elem.InputHook.Get().OnMouseEnter(elem.Name.Get(), new woVector2(x, y));
+                if(Listener != null && !Listener.IsHovering()) {
+                    Listener.OnMouseEnter(elem.Name.Get(), new woVector2(x, y));
                 }
 
-            } else {
-                elem.InputHook.Get().OnMouseLeave(elem.Name.Get(), new woVector2(x, y));
+            } else if (Listener != null && Listener.IsHovering()) {
+                Listener.OnMouseLeave(elem.Name.Get(), new woVector2(x, y));
             }
         }
 

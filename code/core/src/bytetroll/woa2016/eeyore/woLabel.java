@@ -20,7 +20,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
 public class woLabel extends woCanvasElement implements woCanvasElementInputListener {
-    public final woProperty<String> Text = new woProperty<String>(null);
+    public woProperty<String> Text = new woProperty<String>(null);
+    public woProperty<Boolean> IsHovering = new woProperty<>(false);
 
     public woLabel(String text, woVector2 pos, woAsset font, woAsset targetTex) {
         super(pos, new woCanvasElementDataTypeImage(new woCanvasTexture(targetTex)));
@@ -79,12 +80,14 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
 
     @Override
     public boolean OnMouseEnter(String elemName, woVector2 pos) {
-        return false;
+        woCLI.PrintLine("Mouse Entered: " + elemName);
+        return IsHovering.Set(true);
     }
 
     @Override
     public boolean OnMouseLeave(String elemName, woVector2 pos) {
-        return false;
+        woCLI.PrintLine("Mouse Left: " + elemName);
+        return IsHovering.Set(false);
     }
 
     @Override
@@ -103,6 +106,11 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
         packet.batch.draw(rasterizer.Rasterize(new woTextRasterizationJob(Text.Get(), targetTex, font, fontGlyphImage)).AsTexture(),
                 super.Position.Get().x, super.Position.Get().y);
         super.EndDrawing(packet);
+    }
+
+    @Override
+    public boolean IsHovering() {
+        return IsHovering.Get();
     }
 
     private woTextRasterizer rasterizer = new woTextRasterizer();

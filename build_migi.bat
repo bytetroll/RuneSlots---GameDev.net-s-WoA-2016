@@ -2,6 +2,9 @@ echo off
 
 cd %~dp0
 
+del "code\desktop\build\libs\desktop-1.0.jar"
+del "code\core\build\libs\core-1.0.jar"
+
 rmdir /S /Q "build"
 
 cd "code"

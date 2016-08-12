@@ -17,10 +17,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
+import java.awt.*;
+
 public class woButton extends woCanvasElement implements woCanvasElementInputListener {
-    public final woProperty<woAsset> FrameTexture = new woProperty<>(null);
-    public final woProperty<String> ButtonText = new woProperty<>(null);
-    public final woProperty<woAsset> Font = new woProperty<>(null);
+    public woProperty<woAsset> FrameTexture = new woProperty<>(null);
+    public woProperty<String> ButtonText = new woProperty<>(null);
+    public woProperty<woAsset> Font = new woProperty<>(null);
+    public woProperty<Boolean> IsHovering = new woProperty<>(false);
 
     public woButton(String text, woAsset font, woAsset frameTexture, woVector2 pos ) {
         super(new woCanvasElementDataTypeImage(new woCanvasTexture(frameTexture)));
@@ -29,6 +32,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
 
         ButtonText.Set(text);
         Font.Set(font);
+        FrameTexture.Set(frameTexture);
     }
 
     @Override
@@ -100,15 +104,16 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
         return false;
     }
 
-
     @Override
     public boolean OnMouseEnter(String elemName, woVector2 pos) {
-        return false;
+        woCLI.PrintLine("Mouse Entered: " + elemName);
+        return IsHovering.Set(true);
     }
 
     @Override
     public boolean OnMouseLeave(String elemName, woVector2 pos) {
-        return false;
+        woCLI.PrintLine("Mouse Left: " + elemName);
+        return IsHovering.Set(false);
     }
 
     @Override
@@ -126,6 +131,9 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     public boolean OnScrolled(String name, int amount) {
         return false;
     }
+
+    @Override
+    public boolean IsHovering() { return IsHovering.Get(); }
 
     private woTextRasterizer rasterizer = new woTextRasterizer();
 

@@ -7,10 +7,10 @@ import bytetroll.woa2016.memory.woDestructor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 public class woStreamedSound implements woDestructible {
-    public final woProperty<Music> Clip = new woProperty<>(null);
-    public final woProperty<Long> ID = new woProperty<>(0L);
-    public final woProperty<Float> Volume = new woProperty<>(100.0f);
-    public final woProperty<Boolean> Looped = new woProperty<>(false);
+    public woProperty<Music> Clip = new woProperty<>(null);
+    public woProperty<Long> ID = new woProperty<>(0L);
+    public woProperty<Float> Volume = new woProperty<>(100.0f);
+    public woProperty<Boolean> Looped = new woProperty<>(false);
 
     public woStreamedSound(woAsset sound) {
         Clip.Set(Gdx.audio.newMusic(sound.AsLibGdxHandle()));
