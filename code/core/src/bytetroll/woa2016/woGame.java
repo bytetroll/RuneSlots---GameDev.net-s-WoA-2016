@@ -1,7 +1,9 @@
 package bytetroll.woa2016;
 
 import bytetroll.woa2016.audio.woStreamedSound;
+import bytetroll.woa2016.eeyore.woButton;
 import bytetroll.woa2016.eeyore.woImageView;
+import bytetroll.woa2016.eeyore.woLabel;
 import bytetroll.woa2016.io.woAssetArchiveHandler;
 import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
@@ -21,8 +23,9 @@ public class woGame extends ApplicationAdapter {
         // Spawn assets.
         new woStreamedSound(woAssetHandler.Find("woa_audio_background_loop.mp3")).Looped(true).Volume(100).Play();
 
-
-        scene.SpawnActor(new woImageView(woAssetHandler.Find("woa_ui_slot_frame.png"), new woVector2(0, 0)));
+        //scene.SpawnActor(new woImageView(woAssetHandler.Find("woa_ui_slot_frame.png"), new woVector2(0, 0)));
+		scene.SpawnActor(new woLabel("Hello, World!", new woVector2(600, 600), woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png")));
+		//scene.SpawnActor(new woButton("T", woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png"), new woVector2(256, 256)));
 	}
 
 	@Override
