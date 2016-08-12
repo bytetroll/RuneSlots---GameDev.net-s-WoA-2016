@@ -25,7 +25,7 @@ public class woCanvasTexture extends Image implements woDestructible {
     //>> BEGIN DESTRUCTIBLE INTERFACE
     //==================================================================================================================s
     @Override
-    public void Destruct() {
+    public void Destruct()  {
         texture.dispose();
     }
     //==================================================================================================================
