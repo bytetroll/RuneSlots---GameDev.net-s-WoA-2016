@@ -56,7 +56,7 @@ public class woAssetArchiveHandler {
         }
 
         try {
-            Files.walkFileTree(woPath.FromString("./woa2016"), new woAssetDirectoryWalker());
+            Files.walkFileTree(woPath.FromString("./runic"), new woAssetDirectoryWalker());
         } catch(Exception except) {
             woRuntime.HandleException(except);
         }
