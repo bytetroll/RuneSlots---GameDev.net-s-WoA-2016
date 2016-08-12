@@ -11,7 +11,11 @@ import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
+import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 import bytetroll.woa2016.runtime.woRuntime;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class woButton extends woCanvasElement implements woCanvasElementInputListener {
     public final woProperty<woAsset> FrameTexture = new woProperty<>(null);
@@ -24,7 +28,6 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
         super.InputHook.Set(this);
 
         ButtonText.Set(text);
-        FrameTexture.Set(frameTexture);
         Font.Set(font);
     }
 
@@ -36,6 +39,8 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     @Override
     public void Draw(woCanvasElementDrawPacket packet) {
         super.BeginDrawing(packet);
+
+
         packet.batch.draw(
                 rasterizer.Rasterize(
                         new woTextRasterizationJob(
@@ -80,6 +85,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
 
     @Override
     public boolean OnMouseDown(String elemName, woVector2 pos, int pointer, int button) {
+        /*
         previousFrameTex = (woCanvasTexture)super.Scene.Get().getActors().items[0];
         previousFrameTex.AsTexture().dispose();
 
@@ -89,8 +95,21 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
         super.Scene.Get().getActors().items[0] = newTex;
 
         return true;
+        */
+
+        return false;
     }
 
+
+    @Override
+    public boolean OnMouseEnter(String elemName, woVector2 pos) {
+        return false;
+    }
+
+    @Override
+    public boolean OnMouseLeave(String elemName, woVector2 pos) {
+        return false;
+    }
 
     @Override
     public boolean OnTouchDragged(String elemName, woVector2 pos, int pointer) {

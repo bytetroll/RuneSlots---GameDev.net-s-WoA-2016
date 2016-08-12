@@ -44,6 +44,7 @@ public abstract class woCanvasElement extends Image { //implements InputProcesso
     public final woProperty<woCanvasElementData> ElementData = new woProperty<>(null);
     public final woProperty<woCanvasElementInputListener> InputHook = new woProperty<>(null);
     public final woProperty<Stage> Scene = new woProperty<>(null);
+    public final woProperty<Float> ZDepth = new woProperty<>(0.0f);
     //----------------------------------------------------------------------------
     // END PROPERTIES
     //----------------------------------------------------------------------------

@@ -2,6 +2,7 @@ package bytetroll.woa2016.eeyore;
 
 import bytetroll.woa2016.cli.woCLI;
 import bytetroll.woa2016.eeyore.canvas.internal.specialized.woCanvasElementDataTypeImage;
+import bytetroll.woa2016.eeyore.canvas.internal.util.woFontGlyphMapResolver;
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizationJob;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizer;
@@ -30,29 +31,9 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
         this.targetTex = targetTex;
 
         // Lib GDX always stores their binary font files as a .fnt and an accompanying .png.
-        fontGlyphImage = woAssetHandler.Find(font.name.replaceFirst("[.][^.]+$", "") + ".png");
+        fontGlyphImage = woFontGlyphMapResolver.Resolve(font);
 
         super.InputHook.Set(this);
-
-        /*
-        ((woCanvasElementDataTypeImage)ElementData.Get()).addCaptureListener(new InputListener() {
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                try {
-                    throw new Exception("UI input is working bitches!");
-                } catch(Exception except) {
-                    woRuntime.HandleException(except);
-
-                    return true;
-                }
-            }
-
-            @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-            }
-        });
-        */
-
     }
 
     @Override
@@ -96,6 +77,15 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
         return false;
     }
 
+    @Override
+    public boolean OnMouseEnter(String elemName, woVector2 pos) {
+        return false;
+    }
+
+    @Override
+    public boolean OnMouseLeave(String elemName, woVector2 pos) {
+        return false;
+    }
 
     @Override
     public boolean OnScrolled(String name, int amount) {

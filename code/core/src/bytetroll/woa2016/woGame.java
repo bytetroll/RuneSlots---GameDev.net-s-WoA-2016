@@ -1,7 +1,9 @@
 package bytetroll.woa2016;
 
 import bytetroll.woa2016.audio.woStreamedSound;
+import bytetroll.woa2016.eeyore.woButton;
 import bytetroll.woa2016.eeyore.woImageView;
+import bytetroll.woa2016.eeyore.woLabel;
 import bytetroll.woa2016.io.woAssetArchiveHandler;
 import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
@@ -23,18 +25,21 @@ public class woGame extends ApplicationAdapter {
 
 
         scene.SpawnActor(new woImageView(woAssetHandler.Find("woa_ui_slot_frame.png"), new woVector2(0, 0)));
+        //scene.SpawnActor(new woLabel("H", new woVector2(600, 600), woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png")));
+        //scene.SpawnActor(new woButton("T", woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png"), new woVector2(256, 256)));
+
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         scene.Think(Gdx.graphics.getDeltaTime());
         scene.Draw();
 
         if(woBuildConfig.IsDebugBuild.Get()) {
-            fps.log();
+            //fps.log();
         }
 	}
 
