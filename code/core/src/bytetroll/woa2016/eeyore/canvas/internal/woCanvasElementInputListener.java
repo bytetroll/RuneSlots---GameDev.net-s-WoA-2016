@@ -27,6 +27,12 @@ public interface woCanvasElementInputListener {
     public boolean OnTouchDragged(String elemName, woVector2 pos, int pointer);
 
     @woOverridable
+    public boolean OnMouseEnter(String elemName, woVector2 pos);
+
+    @woOverridable
+    public boolean OnMouseLeave(String elemName, woVector2 pos);
+
+    @woOverridable
     public boolean OnMouseMoved(String elemName, woVector2 pos);
 
     @woOverridable

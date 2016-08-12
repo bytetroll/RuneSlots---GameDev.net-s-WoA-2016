@@ -23,21 +23,29 @@ public class woGame extends ApplicationAdapter {
         // Spawn assets.
        // new woStreamedSound(woAssetHandler.Find("woa_audio_background_loop.mp3")).Looped(true).Volume(100).Play();
 
+<<<<<<< HEAD
         //scene.SpawnActor(new woImageView(woAssetHandler.Find("woa_ui_slot_frame.png"), new woVector2(0, 0)));
 		scene.SpawnActor(new woLabel("Hello, World!", new woVector2(600, 600), woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png")));
 		//scene.SpawnActor(new woButton("T", woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png"), new woVector2(256, 256)));
+=======
+
+        scene.SpawnActor(new woImageView(woAssetHandler.Find("woa_ui_slot_frame.png"), new woVector2(0, 0)));
+        //scene.SpawnActor(new woLabel("H", new woVector2(600, 600), woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png")));
+        //scene.SpawnActor(new woButton("T", woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png"), new woVector2(256, 256)));
+
+>>>>>>> origin/master
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 
         scene.Think(Gdx.graphics.getDeltaTime());
         scene.Draw();
 
         if(woBuildConfig.IsDebugBuild.Get()) {
-            fps.log();
+            //fps.log();
         }
 	}
 

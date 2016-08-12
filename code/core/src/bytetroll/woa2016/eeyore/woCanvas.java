@@ -1,19 +1,16 @@
 package bytetroll.woa2016.eeyore;
 
+import bytetroll.woa2016.cli.woCLI;
 import bytetroll.woa2016.eeyore.canvas.internal.specialized.woCanvasElementDataTypeImage;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.math.woVector2;
-import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
@@ -32,9 +29,9 @@ public class woCanvas extends Actor implements InputProcessor {
 
     public void AddElement(woCanvasElement elem) {
         elem.Scene.Set(scene);
+
         sceneElements.add(elem);
     }
-
 
     public void Think(float delta) {
         for(woCanvasElement elem : sceneElements) {
@@ -48,6 +45,7 @@ public class woCanvas extends Actor implements InputProcessor {
         }
     }
 
+    @Override
     public boolean keyDown(int keyCode) {
         for(woCanvasElement elem : sceneElements) {
             elem.InputHook.Get().OnKeyDown(keyCode);
@@ -56,6 +54,7 @@ public class woCanvas extends Actor implements InputProcessor {
         return true;
     }
 
+    @Override
     public boolean keyUp(int keyCode) {
         for(woCanvasElement elem : sceneElements) {
             elem.InputHook.Get().OnKeyUp(keyCode);
@@ -64,6 +63,7 @@ public class woCanvas extends Actor implements InputProcessor {
         return true;
     }
 
+    @Override
     public boolean keyTyped(char ch) {
         for(woCanvasElement elem : sceneElements) {
             elem.InputHook.Get().OnKeyTyped(ch);
@@ -72,6 +72,7 @@ public class woCanvas extends Actor implements InputProcessor {
         return true;
     }
 
+    @Override
     public boolean touchDown(int x, int y, int pointer, int button) {
         for(woCanvasElement elem : sceneElements) {
             final float eX = elem.Position.Get().x;
@@ -93,6 +94,7 @@ public class woCanvas extends Actor implements InputProcessor {
         return true;
     }
 
+    @Override
     public boolean touchUp(int x, int y, int pointer, int button) {
         for(woCanvasElement elem : sceneElements) {
             final float eX = elem.Position.Get().x;
@@ -114,14 +116,34 @@ public class woCanvas extends Actor implements InputProcessor {
         return true;
     }
 
+    @Override
     public boolean touchDragged(int x, int y, int pointer) {
         return true;
     }
 
+    @Override
     public boolean mouseMoved(int x, int y) {
-        return false;
+        for(woCanvasElement elem : sceneElements) {
+            final float eWidth = ((woCanvasElementDataTypeImage) elem.ElementData.Get()).Buffer.Get().AsTexture().getWidth();
+            final float eHeight = ((woCanvasElementDataTypeImage) elem.ElementData.Get()).Buffer.Get().AsTexture().getHeight();
+
+            final Vector3 proj = camera.unproject(new Vector3(x, y, 0.0f));
+            Rectangle rect = new Rectangle(x, y, eWidth, eHeight);
+
+            if(rect.contains(new Vector2(proj.x, proj.y))) {
+                if(elem.InputHook.Get() != null) {
+                    elem.InputHook.Get().OnMouseEnter(elem.Name.Get(), new woVector2(x, y));
+                }
+
+            } else {
+                elem.InputHook.Get().OnMouseLeave(elem.Name.Get(), new woVector2(x, y));
+            }
+        }
+
+        return true;
     }
 
+    @Override
     public boolean scrolled(int amount) {
         return false;
     }
