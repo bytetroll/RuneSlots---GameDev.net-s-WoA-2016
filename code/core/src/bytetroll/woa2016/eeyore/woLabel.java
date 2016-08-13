@@ -7,6 +7,7 @@ import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizationJob;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizer;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
+import bytetroll.woa2016.eeyore.canvas.woCanvasElementDrawPacket;
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;

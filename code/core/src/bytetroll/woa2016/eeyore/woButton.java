@@ -7,32 +7,28 @@ import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizationJob;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizer;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
+import bytetroll.woa2016.eeyore.canvas.woCanvasElementDrawPacket;
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
-import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
-import bytetroll.woa2016.runtime.woRuntime;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-
-import java.awt.*;
 
 public class woButton extends woCanvasElement implements woCanvasElementInputListener {
-    public woProperty<woAsset> FrameTexture = new woProperty<>(null);
+    public woProperty<woAsset> MouseEnterTexture = new woProperty<>(null);
+    public woProperty<woAsset> MouseLeaveTexture = new woProperty<>(null);
     public woProperty<String> ButtonText = new woProperty<>(null);
     public woProperty<woAsset> Font = new woProperty<>(null);
     public woProperty<Boolean> IsHovering = new woProperty<>(false);
 
-    public woButton(String text, woAsset font, woAsset frameTexture, woVector2 pos ) {
-        super(new woCanvasElementDataTypeImage(new woCanvasTexture(frameTexture)));
+    public woButton(String text, woAsset font, woAsset mouseEnterTexture, woAsset mouseLeaveTexture, woVector2 pos ) {
+        super(new woCanvasElementDataTypeImage(new woCanvasTexture(mouseEnterTexture)));
         super.Position.Set(pos);
         super.InputHook.Set(this);
 
         ButtonText.Set(text);
         Font.Set(font);
-        FrameTexture.Set(frameTexture);
+        MouseEnterTexture.Set(mouseEnterTexture);
+        MouseLeaveTexture.Set(mouseLeaveTexture);
     }
 
     @Override
@@ -49,7 +45,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
                 rasterizer.Rasterize(
                         new woTextRasterizationJob(
                                 ButtonText.Get(),
-                                FrameTexture.Get(),
+                                IsHovering.Get() ? MouseEnterTexture.Get() : MouseLeaveTexture.Get(),
                                 Font.Get(),
                                 woFontGlyphMapResolver.Resolve(
                                         Font.Get()
@@ -95,7 +91,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
 
         woRuntime.GarbageCollector.BeginCollection();
 
-        woCanvasTexture newTex = new woCanvasTexture(FrameTexture.Get());
+        woCanvasTexture newTex = new woCanvasTexture(MouseEnterTexture.Get());
         super.Scene.Get().getActors().items[0] = newTex;
 
         return true;
@@ -107,13 +103,15 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     @Override
     public boolean OnMouseEnter(String elemName, woVector2 pos) {
         woCLI.PrintLine("Mouse Entered: " + elemName);
-        return IsHovering.Set(true);
+        IsHovering.Set(true);
+        return true;
     }
 
     @Override
     public boolean OnMouseLeave(String elemName, woVector2 pos) {
         woCLI.PrintLine("Mouse Left: " + elemName);
-        return IsHovering.Set(false);
+        IsHovering.Set(false);
+        return true;
     }
 
     @Override

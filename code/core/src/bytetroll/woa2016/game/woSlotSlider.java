@@ -1,11 +1,11 @@
-package bytetroll.woa2016.game.ui;
+package bytetroll.woa2016.game;
 
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class woSlotSlider extends Image {
     public woSlotSlider(int x, int y, int currentValue) {
-        //super(new AnimationDrawable());
+        //super(new woDrawableAnimation());
     }
 
     private String currentEffect = null;

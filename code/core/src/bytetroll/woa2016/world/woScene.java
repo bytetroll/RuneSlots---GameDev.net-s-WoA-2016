@@ -1,35 +1,26 @@
-package bytetroll.woa2016;
+package bytetroll.woa2016.world;
 
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.eeyore.woCanvas;
-import bytetroll.woa2016.memory.woDestructible;
-import bytetroll.woa2016.memory.woDestructor;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 
-public class woScene implements woDestructible {
+public class woScene {
     public woScene() {
         Gdx.input.setInputProcessor(scene);
 
         ui = new woCanvas(scene, scene.getCamera());
-
-        woDestructor.AddDestructible(this);
     }
-
-    //==================================================================================================================
-    //>> BEGIN DESTRUCTIBLE INTERFACE
-    //==================================================================================================================
-    @Override
-    public void Destruct() {
-        scene.dispose();
-    }
-    //==================================================================================================================
-    //>> END DESTRUCTIBLE INTERFACE
-    //==================================================================================================================
 
     public void SpawnActor(Actor actor) {
         scene.addActor(actor);
+
+        final woActor act = (woActor)actor;
+        act.Scene.Set(scene);
+        actors.add(act);
     }
 
     public void SpawnActor(woCanvas canvas) {
@@ -46,6 +37,10 @@ public class woScene implements woDestructible {
         if(ui != null) {
             ui.Think(delta);
         }
+
+        for(woActor actor : actors) {
+            actor.Think(delta);
+        }
     }
 
     public void Draw() {
@@ -53,6 +48,10 @@ public class woScene implements woDestructible {
 
         if(ui != null) {
             ui.Draw();
+        }
+
+        for(woActor actor : actors) {
+            actor.Draw();
         }
     }
 
@@ -62,4 +61,6 @@ public class woScene implements woDestructible {
 
     private Stage scene = new Stage();
     private woCanvas ui = null;
+
+    private Array<woActor> actors = new Array<>();
 }

@@ -5,6 +5,7 @@ import bytetroll.woa2016.eeyore.canvas.internal.specialized.woCanvasElementDataT
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.math.woVector2;
+import bytetroll.woa2016.world.woActor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
