@@ -1,8 +1,13 @@
 package bytetroll.woa2016;
 
 import bytetroll.woa2016.audio.woStreamedSound;
+import bytetroll.woa2016.cli.woCLI;
 import bytetroll.woa2016.eeyore.woImageView;
 import bytetroll.woa2016.eeyore.woLabel;
+import bytetroll.woa2016.game.event.woEventDispatcher;
+import bytetroll.woa2016.game.event.woGameEvent;
+import bytetroll.woa2016.game.event.woGameEventCallback;
+import bytetroll.woa2016.game.event.woGameEvents;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.io.woAssetArchiveHandler;
 import bytetroll.woa2016.io.woAssetHandler;
@@ -24,11 +29,20 @@ public class woGame extends ApplicationAdapter {
         scene = new woScene();
 
         // Spawn assets.
-        new woStreamedSound(woAssetHandler.Find("woa_audio_background_loop.mp3")).Looped(true).Volume(100).Play();
+        new woStreamedSound(woAssetHandler.Find("runic_audio_background_loop.mp3")).Looped(true).Volume(100).Play();
 
-        scene.SpawnActor(new woImageView(woAssetHandler.Find("woa_ui_slot_frame.png"), new woVector2(0, 0)));
-		scene.SpawnActor(new woLabel("Hello, World!", new woVector2(600, 600), woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png")));
+        scene.SpawnActor(new woImageView(woAssetHandler.Find("runic_ui_slot_frame.png"), new woVector2(0, 0)));
+		//scene.SpawnActor(new woLabel("Hello, World!", new woVector2(600, 600), woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png")));
 		//scene.SpawnActor(new woButton("T", woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png"), new woVector2(256, 256)));
+
+        woEventDispatcher.Subscribe(woGameEvents.BetChanged.Get(), new woGameEventCallback() {
+            @Override
+            public void Raised(woGameEvent event) {
+                woCLI.PrintLine("Event= " + event.Name.Get() + " Data= " + event.Data.Get());
+            }
+        });
+
+        woEventDispatcher.Raise(woGameEvents.BetChanged.Get(), new woGameEvent(woGameEvents.BetChanged.Get(), "Over 9000 - Freeza"));
     }
 
     @Override
