@@ -1,13 +1,10 @@
 package bytetroll.woa2016.eeyore.canvas.internal;
 
-// Dynamically rasterizer text so that we can draw it to a woCanvasTexture.
-
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.math.woVector2;
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class woTextRasterizer {
     public woCanvasTexture Rasterize(woTextRasterizationJob job) {
