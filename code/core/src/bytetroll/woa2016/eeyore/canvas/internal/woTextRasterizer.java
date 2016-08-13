@@ -41,8 +41,14 @@ public class woTextRasterizer {
             // Increment
             Offset += glyph.width * Scale;
         }
+        
+        font.dispose();
+        fontPixmap.dispose();
 
-        return new woCanvasTexture(new Texture(texPixmap));
+        final Texture tex = new Texture(texPixmap);
+        texPixmap.dispose();
+
+        return new woCanvasTexture(tex);
 
 
         //final FreeTypeFontGenerator generator = new FreeTypeFontGenerator(job.font.AsLibGdxHandle());

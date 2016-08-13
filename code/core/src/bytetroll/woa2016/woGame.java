@@ -32,9 +32,12 @@ public class woGame extends ApplicationAdapter {
         new woStreamedSound(woAssetHandler.Find("runic_audio_background_loop.mp3")).Looped(true).Volume(100).Play();
 
         scene.SpawnActor(new woImageView(woAssetHandler.Find("runic_ui_slot_frame.png"), new woVector2(0, 0)));
+        scene.SpawnActor(new woLabel("9000", new woVector2(1050, 550), woAssetHandler.Find("runic_font_bitmap_default.fnt"), woAssetHandler.Find("runic_ui_text_frame.png")));
+
 		//scene.SpawnActor(new woLabel("Hello, World!", new woVector2(600, 600), woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png")));
 		//scene.SpawnActor(new woButton("T", woAssetHandler.Find("default.fnt"), woAssetHandler.Find("bg_btn1.png"), new woVector2(256, 256)));
 
+        /*
         woEventDispatcher.Subscribe(woGameEvents.BetChanged.Get(), new woGameEventCallback() {
             @Override
             public void Raised(woGameEvent event) {
@@ -43,6 +46,7 @@ public class woGame extends ApplicationAdapter {
         });
 
         woEventDispatcher.Raise(woGameEvents.BetChanged.Get(), new woGameEvent(woGameEvents.BetChanged.Get(), "Over 9000 - Freeza"));
+        */
     }
 
     @Override
@@ -81,5 +85,6 @@ public class woGame extends ApplicationAdapter {
 
 	private woScene scene = null;
 
+    // Misc.
     private FPSLogger fps = new FPSLogger();
 }
