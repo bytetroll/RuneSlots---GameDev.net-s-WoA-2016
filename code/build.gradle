@@ -61,7 +61,9 @@ project(":core") {
 
         // https://www.google.com/search?q=.grade%20comments#q=Grade+file+comments
         //compile fileTree(dir: '/Volumes/exec/work/projects/woa2016/code/core/src/bytetroll/woa2016/thirdparty/commonsio/', include: 'commons-io-2.5.jar')
-        compile fileTree(dir: 'C:/Users/Dev/Documents/GitHub/woa2016/code/core/src/bytetroll/woa2016/thirdparty/commonsio' , include: 'commons-io-2.5.jar')
+        compile fileTree(dir: '../core/src/bytetroll/woa2016/thirdparty/commonsio' , include: 'commons-io-2.5.jar')
+        compile fileTree(dir: '../core/src/bytetroll/woa2016/thirdparty/tween' , include: 'tween-engine-api.jar')
+        compile fileTree(dir: '../core/src/bytetroll/woa2016/thirdparty/tween' , include: 'tween-engine-api-sources.jar')
     }
 }
 

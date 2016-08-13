@@ -36,6 +36,15 @@ public class woLog {
         }
     }
 
+    public void LogRaw(String msg, String type, long timestamp) {
+        try {
+            bWriter.write(String.format("%s] $s :: $s\n", type, msg, timestamp));
+            bWriter.flush();
+        } catch(Exception except) {
+            woRuntime.HandleException(except);
+        }
+    }
+
     public String LogPath() {
         return path;
     }

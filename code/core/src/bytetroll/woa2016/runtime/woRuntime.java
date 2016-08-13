@@ -2,6 +2,7 @@ package bytetroll.woa2016.runtime;
 
 import bytetroll.woa2016.runtime.reflect.annot.woReadOnly;
 import bytetroll.woa2016.runtime.reflect.internal.woGarbageCollector;
+import com.badlogic.gdx.utils.TimeUtils;
 
 import java.io.File;
 import java.net.URLDecoder;
@@ -40,5 +41,9 @@ public class woRuntime {
         }
 
         return null; // Never executed.
+    }
+
+    public static long GenerateTimestamp() {
+        return TimeUtils.millis();
     }
 }

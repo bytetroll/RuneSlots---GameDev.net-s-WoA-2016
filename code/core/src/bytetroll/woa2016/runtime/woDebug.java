@@ -1,8 +1,11 @@
 package bytetroll.woa2016.runtime;
 
+import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.woBuildConfig;
 
 public class woDebug {
+    public static woProperty<woLog> LogFile = new woProperty<>(null);
+
     public static void LogInfo(String msg) {
         if(woBuildConfig.IsDebugBuild.Get()) {
             logFile.Log(msg, woLogType.INFO);
@@ -21,5 +24,10 @@ public class woDebug {
         }
     }
 
-    private static woLog logFile = new woLog("woa2016.log");
+    private static woLog logFile = null;
+
+    static {
+        logFile = new woLog("runic.log");
+        LogFile.Set(logFile);
+    }
 }
