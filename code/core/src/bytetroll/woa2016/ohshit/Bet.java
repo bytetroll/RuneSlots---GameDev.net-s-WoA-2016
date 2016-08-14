@@ -4,6 +4,8 @@ package bytetroll.woa2016.ohshit;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -15,8 +17,12 @@ public class Bet extends Image {
     public Label label_total_bet;
     public SlotLogic slot_logic;
 
+    private Sound changeSound = null; // Never disposed.
     public Bet(int x, int y, ArrayList<Double> bets_param, Label label_total_bet_param) {
         super(new AnimationDrawable(1, 4, 128, 64, 0, "runic/runic_ui_bet_slider.png", 0.1f));
+
+        changeSound = Gdx.audio.newSound(Gdx.files.internal("runic/runic_audio_selection.mp3"));
+        changeSound.play();
 
         this.bets = bets_param;
         this.label_total_bet = label_total_bet_param;
@@ -28,6 +34,7 @@ public class Bet extends Image {
                 if(current_bet >= bets.size()) current_bet = 0;
                 animateBet(current_bet);
                 label_total_bet.setText(slot_logic.getTotalBetString());
+                changeSound.play();
                 return true;
             }
 

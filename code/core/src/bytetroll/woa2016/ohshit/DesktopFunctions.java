@@ -39,7 +39,7 @@ public class DesktopFunctions implements AndroidFunctionsInterface {
 
     public float getScore() {
         Gdx.app.log("DesktopFunctions", "Swarm YourGame Get Score");
-        return 1;
+        return 200;
     }
 
     public float getReadedBarcode() {

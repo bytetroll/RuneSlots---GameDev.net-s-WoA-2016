@@ -65,6 +65,7 @@ public class woGame implements ApplicationListener {
 
         Music music = Gdx.audio.newMusic(Gdx.files.internal("runic/runic_audio_background_loop.mp3"));
         music.setLooping(true);
+        music.setVolume(70.0f);
         music.play();
 
         //font
@@ -76,7 +77,7 @@ public class woGame implements ApplicationListener {
         //Label style
         LabelStyle label_syle = new LabelStyle();
         label_syle.font = font;
-        label_syle.fontColor = Color.BLACK;
+        label_syle.fontColor = Color.WHITE;
         uiSkin.add("default", label_syle);
 
         Texture texture_background = new Texture("runic/runic_ui_slot_frame.png");
@@ -84,7 +85,7 @@ public class woGame implements ApplicationListener {
 
         Texture texture_win = new Texture("runic/placeholders/win.png");
         Image win = new Image(texture_win);
-        win.setPosition(0, 400);
+        win.setPosition(100, 100);
         win.setVisible(false);
 
         //Lines ui
@@ -122,20 +123,20 @@ public class woGame implements ApplicationListener {
         }
 
         Label label_credits = new Label("Credits:\n" + androidFunctions.getScore(), uiSkin);
-        label_credits.setPosition(25, 160);
+        label_credits.setPosition(50, 160);
         Label label_total_bet = new Label("Total bet:\n1", uiSkin);
-        label_total_bet.setPosition(25, 260);
+        label_total_bet.setPosition(50, 260);
         Label label_last_prize = new Label("Last prize:\n0", uiSkin);
-        label_last_prize.setPosition(25, 360);
+        label_last_prize.setPosition(50, 360);
 
-        Lines lines = new Lines(1050, 500, 3, label_total_bet, lines_ui);
+        Lines lines = new Lines(1120, 200, 3, label_total_bet, lines_ui);
 
         ArrayList<Double> bets = new ArrayList<Double>();
         bets.add(1.0);
         bets.add(5.0);
         bets.add(10.0);
         bets.add(20.0);
-        Bet bet = new Bet(1050, 350, bets, label_total_bet);
+        Bet bet = new Bet(1025, 200, bets, label_total_bet);
 
         BackgroundButton bg_btn1 = new BackgroundButton(380, 600, 1, stage);
         BackgroundButton bg_btn2 = new BackgroundButton(480, 600, 2, stage);
@@ -172,7 +173,7 @@ public class woGame implements ApplicationListener {
 
         //Collector
         final Label label_collect = new Label("Collect winnings.", uiSkin);
-        label_collect.setPosition(0, 50);
+        label_collect.setPosition(50, 35);
         label_collect.setVisible(false);
 
         label_collect.addCaptureListener(new InputListener() {
@@ -196,7 +197,7 @@ public class woGame implements ApplicationListener {
         //Collector button
         Texture texture_collector_button = new Texture("runic/placeholders/collector_button.png");
         Image collector_button = new Image(texture_collector_button);
-        collector_button.setPosition(800, 0);
+        collector_button.setPosition(570, 35);
         collector_button.addCaptureListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
@@ -222,7 +223,7 @@ public class woGame implements ApplicationListener {
 		pb_btn6.slot_logic=slot_logic;
 		pb_btn7.slot_logic=slot_logic;
 		*/
-        Handle handle = new Handle(1050, 200, slot_logic, this);
+        Handle handle = new Handle(1080, 50, slot_logic, this);
         slot_logic.handle = handle;
 
         //Add objects to the stage
@@ -241,14 +242,14 @@ public class woGame implements ApplicationListener {
         stage.addActor(label_credits);
         stage.addActor(label_total_bet);
         stage.addActor(label_last_prize);
-        stage.addActor(bg_btn1);
-        stage.addActor(bg_btn2);
-        stage.addActor(bg_btn3);
-        stage.addActor(bg_btn4);
-        stage.addActor(bg_btn5);
-        stage.addActor(bg_btn6);
-        stage.addActor(bg_btn7);
-        stage.addActor(bg_btn8);
+        //stage.addActor(bg_btn1);
+        //stage.addActor(bg_btn2);
+        //stage.addActor(bg_btn3);
+        //stage.addActor(bg_btn4);
+        //stage.addActor(bg_btn5);
+        //stage.addActor(bg_btn6);
+        //stage.addActor(bg_btn7);
+        //stage.addActor(bg_btn8);
         stage.addActor(collector_button);
         stage.addActor(label_collect);
 

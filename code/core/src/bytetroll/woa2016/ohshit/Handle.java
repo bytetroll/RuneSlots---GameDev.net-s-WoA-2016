@@ -1,6 +1,8 @@
 package bytetroll.woa2016.ohshit;
 
 import bytetroll.woa2016.woGame;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -8,13 +10,18 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class Handle extends Image {
     public String state;
 
+    private Sound spinSound = null; // Never dispised of.
     public Handle(int x, int y, final SlotLogic slot_logic, final woGame activity) {
         super(new AnimationDrawable(4, 4, 128, 128, 0, "runic/placeholders/handle.png", 0.1f));
+
+        spinSound = Gdx.audio.newSound(Gdx.files.internal("runic/runic_audio_spin.mp3"));
 
         setPosition(x, y);
         addCaptureListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if(slot_logic.canRoll()) ((AnimationDrawable) getDrawable()).animateRow(1, false);
+
+                spinSound.play();
 
                 return true;
             }

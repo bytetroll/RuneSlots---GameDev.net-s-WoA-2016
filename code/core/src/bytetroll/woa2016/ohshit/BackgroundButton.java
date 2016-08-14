@@ -17,24 +17,25 @@ public class BackgroundButton extends Image {
         this.background_id = background_id_param;
 
         setPosition(x, y);
-        addCaptureListener(new InputListener() {
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                //Cleaning
-                Background previous_bg = (Background) stage.getActors().items[0];
-                previous_bg.texture.dispose();
-                System.gc();
-
-                //Creating new
-                Texture texture_background = new Texture("runic/runic_ui_button_click.png");
-                Background background = new Background(texture_background);
-                stage.getActors().items[0] = background;
-                return true;
-            }
-
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-
-            }
-        });
+//        addCaptureListener(new InputListener() {
+//
+//            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+//                //Cleaning
+//                Background previous_bg = (Background) stage.getActors().items[0];
+//                previous_bg.texture.dispose();
+//                System.gc();
+//
+//                //Creating new
+//                Texture texture_background = new Texture("runic/runic_ui_button_click.png");
+//                Background background = new Background(texture_background);
+//                stage.getActors().items[0] = background;
+//                return true;
+//            }
+//
+//            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+//
+//            }
+//        });
     }
 
     @Override
