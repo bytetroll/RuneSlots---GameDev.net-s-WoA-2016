@@ -6,6 +6,7 @@ import bytetroll.woa2016.eeyore.canvas.internal.util.woFontGlyphMapResolver;
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizationJob;
 import bytetroll.woa2016.eeyore.canvas.internal.woTextRasterizer;
+import bytetroll.woa2016.eeyore.canvas.listeners.woButtonEventListener;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElementDrawPacket;
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
@@ -34,6 +35,10 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
         MouseEnterTexture.Set(mouseEnterTexture);
         MouseLeaveTexture.Set(mouseLeaveTexture);
         MouseClickTexture.Set(mouseClickTexture);
+    }
+
+    public void BindEventListener(woButtonEventListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -96,6 +101,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     @Override
     public boolean OnMouseDown(String elemName, woVector2 pos, int pointer, int button) {
         IsClicked.Set(true);
+        listener.OnClick();
         /*
         previousFrameTex = (woCanvasTexture)super.Scene.Get().getActors().items[0];
         previousFrameTex.AsTexture().dispose();
@@ -155,4 +161,5 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     private woTextRasterizer rasterizer = new woTextRasterizer();
 
     private woCanvasTexture previousFrameTex = null;
+    private woButtonEventListener listener = null;
 }

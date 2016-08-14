@@ -1,7 +1,12 @@
 package bytetroll.woa2016.game;
 
+import bytetroll.woa2016.cli.woCLI;
+import bytetroll.woa2016.eeyore.canvas.listeners.woButtonEventListener;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElementDrawPacket;
 import bytetroll.woa2016.eeyore.woButton;
+import bytetroll.woa2016.game.event.woEventDispatcher;
+import bytetroll.woa2016.game.event.woGameEvent;
+import bytetroll.woa2016.game.event.woGameEvents;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.io.woAssetHandler;
 import bytetroll.woa2016.math.woVector2;
@@ -19,6 +24,13 @@ public final class woRollButton extends woActor {
         final woAsset mouseClickTex = woAssetHandler.Find("runic_ui_button_click.png");
 
         button = new woButton("Roll", font, mouseEnterTex, mouseLeaveTex, mouseClickTex, new woVector2(500, 25));
+        button.BindEventListener(new woButtonEventListener() {
+            @Override
+            public void OnClick() {
+                woEventDispatcher.Raise(woGameEvents.Spin.Get(), new woGameEvent(woGameEvents.Spin.Get(), woGameEvent.NO_DATA));
+            }
+        });
+
         scene.SpawnActor(button);
     }
 

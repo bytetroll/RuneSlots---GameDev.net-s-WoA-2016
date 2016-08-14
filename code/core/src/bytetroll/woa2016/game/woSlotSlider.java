@@ -6,6 +6,10 @@ import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.eeyore.woCanvasTextureAnimation;
 import bytetroll.woa2016.eeyore.woImageView;
+import bytetroll.woa2016.game.event.woEventDispatcher;
+import bytetroll.woa2016.game.event.woGameEvent;
+import bytetroll.woa2016.game.event.woGameEventCallback;
+import bytetroll.woa2016.game.event.woGameEvents;
 import bytetroll.woa2016.idoms.woReadOnly;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.io.woAssetHandler;
@@ -36,6 +40,13 @@ public class woSlotSlider extends woActor {
 
         curRow = curVal;
         curEffect = woSlotSliderEffects.BiggerSize.Get();
+
+        woEventDispatcher.Subscribe(woGameEvents.Spin.Get(), new woGameEventCallback() {
+            @Override
+            public void Raised(woGameEvent evt) {
+                BeginRoll();
+            }
+        });
 
         scene.SpawnActor(box);
     }
