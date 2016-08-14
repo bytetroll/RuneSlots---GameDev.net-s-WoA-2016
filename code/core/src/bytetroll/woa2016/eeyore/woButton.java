@@ -16,11 +16,14 @@ import bytetroll.woa2016.math.woVector2;
 public class woButton extends woCanvasElement implements woCanvasElementInputListener {
     public woProperty<woAsset> MouseEnterTexture = new woProperty<>(null);
     public woProperty<woAsset> MouseLeaveTexture = new woProperty<>(null);
+    public woProperty<woAsset> MouseClickTexture = new woProperty<>(null);
+
     public woProperty<String> ButtonText = new woProperty<>(null);
     public woProperty<woAsset> Font = new woProperty<>(null);
     public woProperty<Boolean> IsHovering = new woProperty<>(false);
+    public woProperty<Boolean> IsClicked = new woProperty<>(false);
 
-    public woButton(String text, woAsset font, woAsset mouseEnterTexture, woAsset mouseLeaveTexture, woVector2 pos ) {
+    public woButton(String text, woAsset font, woAsset mouseEnterTexture, woAsset mouseLeaveTexture, woAsset mouseClickTexture, woVector2 pos ) {
         super(new woCanvasElementDataTypeImage(new woCanvasTexture(mouseEnterTexture)));
         super.Position.Set(pos);
         super.InputHook.Set(this);
@@ -29,6 +32,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
         Font.Set(font);
         MouseEnterTexture.Set(mouseEnterTexture);
         MouseLeaveTexture.Set(mouseLeaveTexture);
+        MouseClickTexture.Set(mouseClickTexture);
     }
 
     @Override
@@ -40,12 +44,16 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     public void Draw(woCanvasElementDrawPacket packet) {
         super.BeginDrawing(packet);
 
+        woAsset tex = IsHovering.Get() ? MouseEnterTexture.Get() : MouseLeaveTexture.Get();
+        if(IsClicked.Get()) {
+            tex = MouseClickTexture.Get();
+        }
 
         packet.batch.draw(
                 rasterizer.Rasterize(
                         new woTextRasterizationJob(
                                 ButtonText.Get(),
-                                IsHovering.Get() ? MouseEnterTexture.Get() : MouseLeaveTexture.Get(),
+                                tex,
                                 Font.Get(),
                                 woFontGlyphMapResolver.Resolve(
                                         Font.Get()
@@ -79,12 +87,14 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
 
     @Override
     public boolean OnMouseUp(String elemName, woVector2 pos, int pointer, int button) {
-        return false;
+        IsClicked.Set(false);
+        return true;
 
     }
 
     @Override
     public boolean OnMouseDown(String elemName, woVector2 pos, int pointer, int button) {
+        IsClicked.Set(true);
         /*
         previousFrameTex = (woCanvasTexture)super.Scene.Get().getActors().items[0];
         previousFrameTex.AsTexture().dispose();
@@ -97,7 +107,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
         return true;
         */
 
-        return false;
+        return true;
     }
 
     @Override
