@@ -9,11 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-public class woCanvasElementDataTypeImage /*extends Image*/ implements woCanvasElementData {
+public class woCanvasElementDataTypeImage extends Image implements woCanvasElementData {
     public woProperty<woCanvasTexture> Buffer = new woProperty<>(null);
     public woProperty<woCanvasElementDataType> Type = new woProperty<>(null);
 
     public woCanvasElementDataTypeImage(woCanvasTexture texture) {
+        super(texture.AsTexture());
+
         Type.Set(woCanvasElementDataType.IMAGE);
         Buffer.Set(texture);
     }
