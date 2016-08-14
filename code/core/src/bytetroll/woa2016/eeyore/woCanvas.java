@@ -3,12 +3,14 @@ package bytetroll.woa2016.eeyore;
 import bytetroll.woa2016.cli.woCLI;
 import bytetroll.woa2016.eeyore.canvas.internal.specialized.woCanvasElementDataTypeImage;
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementInputListener;
+import bytetroll.woa2016.eeyore.canvas.woAnimationDrawQueueInterface;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.math.woVector2;
 import bytetroll.woa2016.world.woActor;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -37,12 +39,20 @@ public class woCanvas extends Actor implements InputProcessor {
 
     public void Think(float delta) {
         for(woCanvasElement elem : sceneElements) {
+            if(elem.Animation.Get() != null) {
+                elem.Animation.Get().Think(delta);
+            }
+
             elem.Think(delta);
         }
     }
 
     public void Draw() {
         for(woCanvasElement elem : sceneElements) {
+            if(elem.Animation.Get() != null) {
+                elem.Animation.Get().Draw();
+            }
+
             elem.Draw(scene);
         }
     }

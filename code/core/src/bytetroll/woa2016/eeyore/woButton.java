@@ -23,6 +23,7 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
     public woProperty<Boolean> IsHovering = new woProperty<>(false);
     public woProperty<Boolean> IsClicked = new woProperty<>(false);
 
+
     public woButton(String text, woAsset font, woAsset mouseEnterTexture, woAsset mouseLeaveTexture, woAsset mouseClickTexture, woVector2 pos ) {
         super(new woCanvasElementDataTypeImage(new woCanvasTexture(mouseEnterTexture)));
         super.Position.Set(pos);
@@ -142,6 +143,14 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
 
     @Override
     public boolean IsHovering() { return IsHovering.Get(); }
+
+    public void SetAnimation(woCanvasTextureAnimation anim) {
+        super.Animation.Set(anim);
+    }
+
+    public woCanvasTextureAnimation GetAnimation() {
+        return super.Animation.Get();
+    }
 
     private woTextRasterizer rasterizer = new woTextRasterizer();
 

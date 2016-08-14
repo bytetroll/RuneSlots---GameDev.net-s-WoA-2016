@@ -3,6 +3,7 @@ package bytetroll.woa2016.eeyore.canvas;
 // Base class for anything that needs to be added to a canvas.  This is the parent
 // for all UI controls.
 
+import bytetroll.woa2016.eeyore.woCanvasTextureAnimation;
 import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 
 import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementData;
@@ -15,6 +16,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.utils.Array;
 
 import java.util.UUID;
 
@@ -28,6 +30,7 @@ public abstract class woCanvasElement extends Image { //implements InputProcesso
     public woProperty<woCanvasElementInputListener> InputHook = new woProperty<>(null);
     public woProperty<Stage> Scene = new woProperty<>(null);
     public woProperty<Float> ZDepth = new woProperty<>(0.0f);
+    public woProperty<woCanvasTextureAnimation> Animation = new woProperty<>(null);
     //----------------------------------------------------------------------------
     // END PROPERTIES
     //----------------------------------------------------------------------------

@@ -114,6 +114,14 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
         return IsHovering.Get();
     }
 
+    public void SetAnimation(woCanvasTextureAnimation anim) {
+        super.Animation.Set(anim);
+    }
+
+    public woCanvasTextureAnimation GetAnimation() {
+        return super.Animation.Get();
+    }
+
     private woTextRasterizer rasterizer = new woTextRasterizer();
 
     private woAsset font = null;

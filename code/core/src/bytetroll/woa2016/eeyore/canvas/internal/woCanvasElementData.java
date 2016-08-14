@@ -10,6 +10,4 @@ public interface woCanvasElementData {
 
     @woOverridable
     public woCanvasElementDataType GetElementDataType();
-
-    public void Destruct();
 }

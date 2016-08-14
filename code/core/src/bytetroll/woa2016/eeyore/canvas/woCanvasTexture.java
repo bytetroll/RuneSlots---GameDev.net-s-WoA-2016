@@ -15,6 +15,10 @@ public class woCanvasTexture extends Image {
         this.texture = texture;
     }
 
+    public void Dispose() {
+        texture.dispose();
+    }
+
     public woCanvasTexture(woAsset tex) {
         texture = AssetAsTexture(tex);
     }

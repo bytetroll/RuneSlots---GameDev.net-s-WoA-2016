@@ -27,8 +27,4 @@ public class woCanvasElementDataTypeImage /*extends Image*/ implements woCanvasE
     public woCanvasElementDataType GetElementDataType() {
         return Type.Get();
     }
-
-    @Override
-    public void Destruct() {
-    }
 }

@@ -98,4 +98,12 @@ public class woImageView extends woCanvasElement implements woCanvasElementInput
 
     @Override
     public boolean IsHovering() { return IsHovering.Get(); }
+
+    public void SetAnimation(woCanvasTextureAnimation anim) {
+        super.Animation.Set(anim);
+    }
+
+    public woCanvasTextureAnimation GetAnimation() {
+        return super.Animation.Get();
+    }
 }
