@@ -7,6 +7,7 @@ import bytetroll.woa2016.eeyore.canvas.woAnimationDrawQueueInterface;
 import bytetroll.woa2016.eeyore.canvas.woCanvasElement;
 import bytetroll.woa2016.math.woVector2;
 import bytetroll.woa2016.world.woActor;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Camera;
@@ -55,6 +56,10 @@ public class woCanvas extends Actor implements InputProcessor {
 
             elem.Draw(scene);
         }
+    }
+
+    public List<woCanvasElement> Elements() {
+        return sceneElements;
     }
 
     @Override

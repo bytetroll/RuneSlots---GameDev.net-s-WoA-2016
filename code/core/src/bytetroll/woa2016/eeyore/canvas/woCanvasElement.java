@@ -38,8 +38,18 @@ public abstract class woCanvasElement extends Image { //implements InputProcesso
     }
 
     public woCanvasElement(woCanvasElementData data) {
+        super(data.GetElementBuffer().AsTexture());
+
         Name.Set(String.valueOf(UUID.randomUUID()));
         ElementData.Set(data);
+    }
+
+    public int Width() {
+        return ElementData.Get().GetElementBuffer().AsTexture().getWidth();
+    }
+
+    public int Height() {
+        return ElementData.Get().GetElementBuffer().AsTexture().getHeight();
     }
 
     public void ChangePosition(woVector2 pos) {

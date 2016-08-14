@@ -55,6 +55,16 @@ public class woScene {
         }
     }
 
+    public woCanvasElement FindCanvasActor(woCanvasElement elem) {
+        for(woCanvasElement e : ui.Elements()) {
+            if(e.equals(elem)) {
+                return e;
+            }
+        }
+
+        return null;
+    }
+
     //public static Stage GetWorld() {
     //    return scene;
     //}

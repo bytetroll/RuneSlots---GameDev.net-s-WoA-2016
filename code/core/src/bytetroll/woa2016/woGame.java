@@ -15,6 +15,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class woGame extends ApplicationAdapter {
 
 	@Override
@@ -28,9 +31,18 @@ public class woGame extends ApplicationAdapter {
 
 		scene.SpawnActor(new woImageView(woAssetHandler.Find("runic_ui_slot_frame.png"), new woVector2(0, 0)));
 		scene.SpawnActor(new woRollButton(scene));
-		scene.SpawnActor(new woSlotSlider(scene));
 
+		for(int i = 0; i < 6; i++) {
+			List<woSlotSlider> sliderCols = new ArrayList<>();
 
+			for(int j = 0; j < 3; j++) {
+				final woVector2 pos = new woVector2((256 + i), (384 - j));
+				//final woVector2 pos = new woVector2(((128 + i) * 256), ((128 - j ) * 384));
+				final int startPos = (int)(((Math.random() * 1000) % 7) + 1);
+
+				scene.SpawnActor(new woSlotSlider(scene, pos, startPos));
+			}
+		}
 
 
 		//l = new woLabel("9000", new woVector2(1050, 550), woAssetHandler.Find("runic_font_bitmap_default.fnt"), woAssetHandler.Find("runic_ui_text_frame.png"));
@@ -68,7 +80,7 @@ public class woGame extends ApplicationAdapter {
         //woRenderer.DrawText(text, new woVector2(100, 100), woRenderer.RasterizeTrueTypeFont(text, font, 42, Color.WHITE, Color.BLUE, 2, 2));
 
         if(woBuildConfig.IsDebugBuild.Get()) {
-            //fps.log();
+            fps.log();
         }
 	}
 
@@ -90,7 +102,6 @@ public class woGame extends ApplicationAdapter {
     }
 
 	private woScene scene = null;
-
     // Misc.
     private FPSLogger fps = new FPSLogger();
 }
