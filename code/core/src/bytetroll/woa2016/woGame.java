@@ -3,6 +3,7 @@ package bytetroll.woa2016;
 import java.util.ArrayList;
 
 import bytetroll.woa2016.ohshit.*;
+import bytetroll.woa2016.runtime.woRuntime;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -83,10 +84,10 @@ public class woGame implements ApplicationListener {
         Texture texture_background = new Texture("runic/runic_ui_slot_frame.png");
         Background background = new Background(texture_background);
 
-        Texture texture_win = new Texture("runic/placeholders/win.png");
-        Image win = new Image(texture_win);
-        win.setPosition(100, 100);
-        win.setVisible(false);
+        //Texture texture_win = new Texture("runic/placeholders/win.png");
+        //Image win = new Image(texture_win);
+        //win.setPosition(100, 100);
+        //win.setVisible(false);
 
         //Lines ui
 
@@ -122,21 +123,21 @@ public class woGame implements ApplicationListener {
             boxes.add(boxes_columns);
         }
 
-        Label label_credits = new Label("Credits:\n" + androidFunctions.getScore(), uiSkin);
-        label_credits.setPosition(50, 160);
-        Label label_total_bet = new Label("Total bet:\n1", uiSkin);
-        label_total_bet.setPosition(50, 260);
-        Label label_last_prize = new Label("Last prize:\n0", uiSkin);
-        label_last_prize.setPosition(50, 360);
+        Label label_credits = new Label("Your coin:\n" + (int)androidFunctions.getScore(), uiSkin);
+        label_credits.setPosition(30, 160);
+        Label label_total_bet = new Label("Coin bet:\n1", uiSkin);
+        label_total_bet.setPosition(30, 260);
+        Label label_last_prize = new Label("Last winnings:\n0", uiSkin);
+        label_last_prize.setPosition(30, 360);
 
-        Lines lines = new Lines(1120, 200, 3, label_total_bet, lines_ui);
+        Lines lines = new Lines(1135, 200, 3, label_total_bet, lines_ui);
 
         ArrayList<Double> bets = new ArrayList<Double>();
         bets.add(1.0);
         bets.add(5.0);
         bets.add(10.0);
         bets.add(20.0);
-        Bet bet = new Bet(1025, 200, bets, label_total_bet);
+        Bet bet = new Bet(1020, 200, bets, label_total_bet);
 
         BackgroundButton bg_btn1 = new BackgroundButton(380, 600, 1, stage);
         BackgroundButton bg_btn2 = new BackgroundButton(480, 600, 2, stage);
@@ -165,15 +166,15 @@ public class woGame implements ApplicationListener {
 		powerups.add(pb_btn7);
 		*/
 
-        slot_logic = new SlotLogic(boxes, androidFunctions.getScore(), win, lines, bet, label_credits, label_total_bet, label_last_prize, powerups, androidFunctions);
+        slot_logic = new SlotLogic(boxes, androidFunctions.getScore(), lines, bet, label_credits, label_total_bet, label_last_prize, powerups, androidFunctions);
 
         //Barcode reader
 
 
 
         //Collector
-        final Label label_collect = new Label("Collect winnings.", uiSkin);
-        label_collect.setPosition(50, 35);
+        final Label label_collect = new Label("Collect won coin", uiSkin);
+        label_collect.setPosition(30, 50);
         label_collect.setVisible(false);
 
         label_collect.addCaptureListener(new InputListener() {
@@ -195,9 +196,9 @@ public class woGame implements ApplicationListener {
         // end Collector
 
         //Collector button
-        Texture texture_collector_button = new Texture("runic/placeholders/collector_button.png");
+        Texture texture_collector_button = new Texture("runic/runic_ui_collect_button.png");
         Image collector_button = new Image(texture_collector_button);
-        collector_button.setPosition(570, 35);
+        collector_button.setPosition(520, 25);
         collector_button.addCaptureListener(new InputListener() {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
@@ -205,9 +206,8 @@ public class woGame implements ApplicationListener {
             }
 
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                label_collect.setText("Your session winnings: " + slot_logic.credits + "");
+                label_collect.setText((int) slot_logic.credits + " coinage gained.");
                 label_collect.setVisible(true);
-
             }
         });
         // end Collector button
@@ -235,7 +235,6 @@ public class woGame implements ApplicationListener {
         stage.addActor(handle);
         stage.addActor(lines);
         stage.addActor(bet);
-        stage.addActor(win);
         stage.addActor(line_ui1);
         stage.addActor(line_ui2);
         stage.addActor(line_ui3);

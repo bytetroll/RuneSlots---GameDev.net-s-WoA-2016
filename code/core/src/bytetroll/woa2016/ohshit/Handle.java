@@ -12,7 +12,7 @@ public class Handle extends Image {
 
     private Sound spinSound = null; // Never dispised of.
     public Handle(int x, int y, final SlotLogic slot_logic, final woGame activity) {
-        super(new AnimationDrawable(4, 4, 128, 128, 0, "runic/placeholders/handle.png", 0.1f));
+        super(new AnimationDrawable(4, 4, 128, 128, 0, "runic/runic_ui_handle.png", 0.1f));
 
         spinSound = Gdx.audio.newSound(Gdx.files.internal("runic/runic_audio_spin.mp3"));
 

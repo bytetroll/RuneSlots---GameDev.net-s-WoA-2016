@@ -18,7 +18,7 @@ public class Lines extends Image {
 
     private Sound changeSound = null; // Never disposed.
     public Lines(int x, int y, int max_lines_param, Label label_total_bet_param, ArrayList<Image> lines_ui_param) {
-        super(new AnimationDrawable(1, 4, 128, 64, 0, "runic/runic_ui_line.png", 0.1f));
+        super(new AnimationDrawable(1, 4, 128, 64, 0, "runic/runic_ui_line_selector.png", 0.1f));
 
         changeSound = Gdx.audio.newSound(Gdx.files.internal("runic/runic_audio_selection.mp3"));
 

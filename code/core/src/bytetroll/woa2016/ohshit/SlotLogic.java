@@ -13,8 +13,6 @@ public class SlotLogic {
     public Bet bet;
     public float credits;
     public float credits_saved;
-    public Image win;
-
     public Label label_credits;
     public Label label_total_bet;
     public Label label_last_prize;
@@ -23,11 +21,10 @@ public class SlotLogic {
 
     private final AndroidFunctionsInterface androidFunctions;
 
-    public SlotLogic(ArrayList<ArrayList<Box>> boxes, float credits, Image win, Lines lines, Bet bet, Label label_credits, Label label_total_bet, Label label_last_prize, ArrayList<Powerup> powerups, AndroidFunctionsInterface androidFunctions_param) {
+    public SlotLogic(ArrayList<ArrayList<Box>> boxes, float credits, Lines lines, Bet bet, Label label_credits, Label label_total_bet, Label label_last_prize, ArrayList<Powerup> powerups, AndroidFunctionsInterface androidFunctions_param) {
         this.boxes = boxes;
         this.credits = credits;
         this.credits_saved = credits;
-        this.win = win;
         this.lines = lines;
         this.bet = bet;
         this.label_credits = label_credits;
@@ -52,7 +49,6 @@ public class SlotLogic {
             for(int j = 0; j < boxes.get(i).size(); j++)
                 boxes.get(i).get(j).beginRoll();
         }
-        win.setVisible(false);
         label_credits.setText(getCreditsString());
     }
 
@@ -106,7 +102,6 @@ public class SlotLogic {
         }
 
         if(prize != 0) {
-            win.setVisible(true);
             credits += prize;
             last_prize = prize;
         }
@@ -214,15 +209,15 @@ public class SlotLogic {
     }
 
     public String getCreditsString() {
-        return "Credits:\n" + credits;
+        return "Your coin:\n" + (int)credits;
     }
 
     public String getTotalBetString() {
-        return "Total bet:\n" + getTotalBet();
+        return "Coin bet:\n" + (int)getTotalBet();
     }
 
     public String getLastPrizeString() {
-        return "Last prize:\n" + last_prize;
+        return "Last winnings:\n" + (int)last_prize;
     }
 
     public double getTotalBet() {

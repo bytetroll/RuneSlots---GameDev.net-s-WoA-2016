@@ -20,7 +20,7 @@ public class Powerup extends Image {
     public Label label_credits;
 
     public Powerup(int x, int y, int powerup_id_param, Skin skin_param, Label label_credits_param) {
-        super(new AnimationDrawable(1, 1, 64, 64, 0, "runic/placeholder/powerup_btn" + powerup_id_param + ".png", 0.1f));
+        //super(new AnimationDrawable(1, 1, 64, 64, 0, "runic/placeholder/powerup_btn" + powerup_id_param + ".png", 0.1f));
 
         this.skin = skin_param;
         this.powerup_id = powerup_id_param;
