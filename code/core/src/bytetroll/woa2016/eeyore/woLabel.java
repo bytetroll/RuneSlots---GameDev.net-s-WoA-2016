@@ -17,6 +17,7 @@ import bytetroll.woa2016.memory.woDestructible;
 import bytetroll.woa2016.runtime.reflect.annot.woOverridable;
 import bytetroll.woa2016.runtime.woRuntime;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 
@@ -104,9 +105,11 @@ public class woLabel extends woCanvasElement implements woCanvasElementInputList
     @Override
     public void Draw(woCanvasElementDrawPacket packet) {
         super.BeginDrawing(packet);
-        packet.batch.draw(rasterizer.Rasterize(new woTextRasterizationJob(Text.Get(), targetTex, font, fontGlyphImage)).AsTexture(),
-                super.Position.Get().x, super.Position.Get().y);
+        final Texture rasterized = rasterizer.Rasterize(new woTextRasterizationJob(Text.Get(), targetTex, font, fontGlyphImage)).AsTexture();
+        packet.batch.draw(rasterized, super.Position.Get().x, super.Position.Get().y);
         super.EndDrawing(packet);
+
+        rasterized.dispose();
     }
 
     @Override

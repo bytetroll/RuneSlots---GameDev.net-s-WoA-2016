@@ -1,6 +1,7 @@
 package bytetroll.woa2016.desktop;
 
 import bytetroll.woa2016.cli.woCLI;
+import bytetroll.woa2016.ohshit.DesktopFunctions;
 import bytetroll.woa2016.runtime.reflect.annot.woReadOnly;
 import bytetroll.woa2016.woGame;
 import bytetroll.woa2016.io.woRegistry;
@@ -21,6 +22,6 @@ public class DesktopLauncher {
 
 		//System.setProperty("org.lwjgl.opengl.Window.undecorated", "true");
 
-		new LwjglApplication(new woGame(), config);
+		new LwjglApplication(new woGame(new DesktopFunctions()), config);
 	}
 }

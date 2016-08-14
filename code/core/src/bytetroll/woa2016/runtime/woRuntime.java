@@ -12,6 +12,10 @@ public class woRuntime {
     @woReadOnly
     public static final woGarbageCollector GarbageCollector = new woGarbageCollector();
 
+    public static void CollectGarbage() {
+        System.gc();
+    }
+
     public static void HandleException(Exception except) {
         woDebug.LogFatal(except.getMessage());
         except.printStackTrace();

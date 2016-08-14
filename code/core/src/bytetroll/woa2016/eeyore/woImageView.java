@@ -12,6 +12,7 @@ import bytetroll.woa2016.math.woVector2;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.sun.corba.se.impl.ior.ByteBuffer;
 import com.sun.imageio.plugins.common.ImageUtil;
 
@@ -24,10 +25,15 @@ public class woImageView extends woCanvasElement implements woCanvasElementInput
 
     public woImageView(woAsset texture, woVector2 pos) {
         super(new woCanvasElementDataTypeImage(new woCanvasTexture(texture)));
+
         super.InputHook.Set(this);
         super.Position.Set(pos);
 
         Tex.Set(texture);
+    }
+
+    public void SetDrawable(Drawable d) {
+        super.setDrawable(d);
     }
 
     public woVector2 Scale() {

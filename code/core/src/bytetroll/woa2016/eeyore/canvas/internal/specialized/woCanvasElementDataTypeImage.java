@@ -5,11 +5,13 @@ import bytetroll.woa2016.eeyore.canvas.internal.woCanvasElementDataType;
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 
 import bytetroll.woa2016.idoms.woProperty;
+import bytetroll.woa2016.memory.woDestructible;
+import bytetroll.woa2016.memory.woDestructor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
-public class woCanvasElementDataTypeImage extends Image implements woCanvasElementData {
+public class woCanvasElementDataTypeImage extends Image implements woCanvasElementData, woDestructible {
     public woProperty<woCanvasTexture> Buffer = new woProperty<>(null);
     public woProperty<woCanvasElementDataType> Type = new woProperty<>(null);
 
@@ -18,6 +20,13 @@ public class woCanvasElementDataTypeImage extends Image implements woCanvasEleme
 
         Type.Set(woCanvasElementDataType.IMAGE);
         Buffer.Set(texture);
+
+        woDestructor.AddDestructible(this);
+    }
+
+    @Override
+    public void Destructor() {
+        Buffer.Get().Dispose();
     }
 
     @Override

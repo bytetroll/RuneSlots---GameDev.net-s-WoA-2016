@@ -1,5 +1,6 @@
 package bytetroll.woa2016.eeyore;
 
+import bytetroll.woa2016.cli.woCLI;
 import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
@@ -11,7 +12,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.utils.BaseDrawable;
 
 
-public class woCanvasTextureAnimation {
+public class woCanvasTextureAnimation extends BaseDrawable{
     public woCanvasTextureAnimation(woVector2 pos, int frameColumns, int frameRows, int width, int height, int currentRowAnim,
             woCanvasTexture texture, float frameDuration) {
         this.frameColumns = frameColumns;
@@ -54,7 +55,7 @@ public class woCanvasTextureAnimation {
             anims[i] = new Animation(frameDuration, texRegion);
         }
 
-        tex.dispose();
+        //SSSStex.dispose();
 
         return anims;
     }

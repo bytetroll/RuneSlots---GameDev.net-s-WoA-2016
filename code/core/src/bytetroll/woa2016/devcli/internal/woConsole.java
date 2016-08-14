@@ -184,7 +184,7 @@ public abstract class woConsole implements woConsoleInterface, woDestructible {
     // BEGIN DESTRUCTIBLE INTERFACE
     //----------------------------------------------------------------------------
     @Override
-    public void Destruct() {
+    public void Destructor() {
     }
     //----------------------------------------------------------------------------
     // BEGIN DESTRUCTIBLE INTERFACE

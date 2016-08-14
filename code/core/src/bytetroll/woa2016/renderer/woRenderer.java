@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class woRenderer implements woDestructible {
     @Override
-    public void Destruct() {
+    public void Destructor() {
         batch.dispose();
     }
 

@@ -10,7 +10,7 @@ public class woDestructor {
 
     public static void DestoryAll() {
         for(woDestructible obj : objects) {
-            obj.Destruct();
+            obj.Destructor();
         }
     }
 

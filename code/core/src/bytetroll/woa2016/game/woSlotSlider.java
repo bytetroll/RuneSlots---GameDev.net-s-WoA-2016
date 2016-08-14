@@ -20,6 +20,9 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 public class woSlotSlider extends woActor {
     public woSlotSlider(woScene scene, woVector2 pos, int curVal) {
         this.scene = scene;
@@ -45,6 +48,14 @@ public class woSlotSlider extends woActor {
             @Override
             public void Raised(woGameEvent evt) {
                 BeginRoll();
+
+                final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(1);
+                executor.schedule(new Runnable() {
+                    @Override
+                    public void run() {
+                        EndRoll();
+                    }
+                }, 4, TimeUnit.SECONDS);
             }
         });
 

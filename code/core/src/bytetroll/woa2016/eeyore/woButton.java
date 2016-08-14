@@ -13,6 +13,7 @@ import bytetroll.woa2016.eeyore.canvas.woCanvasTexture;
 import bytetroll.woa2016.idoms.woProperty;
 import bytetroll.woa2016.io.woAsset;
 import bytetroll.woa2016.math.woVector2;
+import com.badlogic.gdx.graphics.Texture;
 
 public class woButton extends woCanvasElement implements woCanvasElementInputListener {
     public woProperty<woAsset> MouseEnterTexture = new woProperty<>(null);
@@ -55,22 +56,18 @@ public class woButton extends woCanvasElement implements woCanvasElementInputLis
             tex = MouseClickTexture.Get();
         }
 
+        final Texture rasterized = rasterizer.Rasterize(new woTextRasterizationJob(ButtonText.Get(), tex,
+                        Font.Get(), woFontGlyphMapResolver.Resolve(Font.Get()))).AsTexture();
+
         packet.batch.draw(
-                rasterizer.Rasterize(
-                        new woTextRasterizationJob(
-                                ButtonText.Get(),
-                                tex,
-                                Font.Get(),
-                                woFontGlyphMapResolver.Resolve(
-                                        Font.Get()
-                                )
-                        )
-                ).AsTexture(),
+                rasterized,
                 super.Position.Get().x,
                 super.Position.Get().y
         );
 
         super.EndDrawing(packet);
+
+        rasterized.dispose();
     }
 
     @Override

@@ -23,7 +23,7 @@ public class woSound implements woDestructible {
     //>> BEGIN DESTRUCTIBLE INTERFACE
     //==================================================================================================================
     @Override
-    public void Destruct() {
+    public void Destructor() {
         Clip.Get().dispose();
     }
     //==================================================================================================================
