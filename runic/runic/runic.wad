@@ -1,0 +1,8 @@
+##
+# Woa2016 registry file.
+##
+
+[windowing]
+title = Runic
+width = 1280
+height = 736
